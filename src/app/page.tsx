@@ -1,4 +1,3 @@
-import Image from "next/image";
 import styles from "./page.module.css";
 import { getPopularMovies } from "@/api/tmdb/getPopularMovies";
 import { MovieRusult } from "@/types/tmdb";
@@ -11,7 +10,7 @@ export default async function Home() {
     <div className={styles.page}>
       {movies.results.map((movie: MovieRusult) => {
         return (
-          <div className="">
+          <div className="" key={movie.id}>
             <h2>{movie.title}</h2>
           </div>
         );
