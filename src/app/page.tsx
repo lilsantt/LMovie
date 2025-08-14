@@ -1,20 +1,47 @@
-import styles from "./page.module.css";
-import { getPopularMovies } from "@/api/tmdb/getPopularMovies";
-import { MovieRusult } from "@/types/tmdb";
+import { getMovies } from "@/api/tmdb/getMovies";
+import { getUpcomingMoviesWithTrailers } from "@/api/tmdb/getUpcomingMovieTrailers";
+import { About } from "@/components/About/About";
+import Films from "@/components/Films/FilmsList";
+import FilmsSlider from "@/components/FilmsSlider/FilmsSlider";
+import PopularFilmList from "@/components/PopularFilmList/PopularFilmList";
+import Section from "@/components/Section/Section";
+import UpcomingTrailers from "@/components/UpcomingTrailers/UpcomingTrailers";
+import { TMDB_ENDPOINTS } from "@/constants/apiRoutes";
 
 export default async function Home() {
-  const movies = await getPopularMovies();
-  console.log(movies);
-  if (!movies) return null;
+  const [popularMovies, trendingTV, upcomingTrailers] = await Promise.all([
+    getMovies({
+      count: 10,
+      endpoint: TMDB_ENDPOINTS.POPULAR_MOVIES,
+    }),
+    getMovies({
+      count: 10,
+      endpoint: TMDB_ENDPOINTS.TRENDING_TV_SHOWS,
+    }),
+    getUpcomingMoviesWithTrailers(4),
+  ]);
+
   return (
-    <div className={styles.page}>
-      {movies.results.map((movie: MovieRusult) => {
-        return (
-          <div className="" key={movie.id}>
-            <h2>{movie.title}</h2>
-          </div>
-        );
-      })}
+    <div>
+      {popularMovies && <PopularFilmList movies={popularMovies.results} />}
+      <Section>
+        <About />
+      </Section>
+      {trendingTV && (
+        <Section title="Популярные сериалы" link="tv/trending">
+          <Films films={trendingTV.results} type="tv" />
+        </Section>
+      )}
+      {popularMovies && (
+        <Section title="Популярные фильмы" link="movie/trending">
+          <Films films={popularMovies.results} type="movie" />
+        </Section>
+      )}
+      {upcomingTrailers && (
+        <Section title="Последние трейлеры">
+          <UpcomingTrailers trailers={upcomingTrailers} />
+        </Section>
+      )}
     </div>
   );
 }

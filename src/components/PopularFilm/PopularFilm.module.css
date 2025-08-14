@@ -1,0 +1,44 @@
+.film {
+  position: relative;
+  animation: born 0.5s ease-in-out;
+}
+
+@keyframes born {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.description {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 18px;
+  color: var(--white);
+}
+
+.info {
+  position: absolute;
+  z-index: 2;
+  top: 158px;
+  max-width: 480px;
+  background-color: var(--background-gradient);
+  padding: 30px;
+  border-radius: 8px;
+  min-height: 55%;
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
+}
+
+.button {
+  margin-top: auto;
+}
+
+.description {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 18px;
+}

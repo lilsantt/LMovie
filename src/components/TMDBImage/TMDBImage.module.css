@@ -1,0 +1,20 @@
+.fw {
+  width: 100%;
+  max-height: 700px;
+  object-fit: cover;
+}
+
+.fz {
+  width: 100%;
+}
+
+.mini {
+  width: 250px;
+  height: 370px;
+}
+
+.list {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+}

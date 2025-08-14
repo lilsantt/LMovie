@@ -1,0 +1,38 @@
+.sliderWrapper {
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding-bottom: 10px;
+  cursor: grab;
+  -webkit-overflow-scrolling: touch;
+  scroll-behavior: smooth;
+}
+
+.sliderWrapper:active {
+  cursor: grabbing;
+}
+
+.slider {
+  display: flex;
+  gap: 16px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.item {
+  flex: 0 0 auto;
+}
+
+/* Кастомный скроллбар */
+.sliderWrapper::-webkit-scrollbar {
+  height: 6px;
+}
+
+.sliderWrapper::-webkit-scrollbar-thumb {
+  background: rgba(150, 150, 150, 0.5);
+  border-radius: 6px;
+}
+
+.sliderWrapper::-webkit-scrollbar-track {
+  background: transparent;
+}

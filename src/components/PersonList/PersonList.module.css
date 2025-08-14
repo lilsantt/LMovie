@@ -1,0 +1,13 @@
+.list {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.link:hover {
+  color: var(--active);
+}
+
+.link {
+  transition: color 0.3s;
+}

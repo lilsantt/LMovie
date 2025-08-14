@@ -1,0 +1,41 @@
+.rating {
+  display: flex;
+  column-gap: 10px;
+  align-items: center;
+}
+
+.value {
+  font-size: 17px;
+  font-weight: 600;
+  line-height: 17px;
+  color: var(--white);
+}
+
+.white {
+  color: var(--white);
+}
+
+.black {
+  color: var(--primary);
+}
+
+.green {
+  color: var(--success);
+}
+
+.grey {
+  color: var(--mid);
+}
+
+.red {
+  color: var(--error);
+}
+
+.mini .value {
+  font-size: 13px;
+}
+
+.mini .image {
+  width: 36px;
+  height: 18px;
+}

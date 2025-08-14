@@ -1,0 +1,7 @@
+.text {
+  color: #555;
+  font-size: 0.85em;
+  font-style: italic; /* Курсив для кинематографичности */
+  letter-spacing: 0.5px;
+  position: relative;
+}

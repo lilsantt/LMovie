@@ -1,0 +1,49 @@
+.card {
+  max-width: 250px;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.image {
+  max-width: 250px;
+  height: 370px;
+  margin-bottom: 10px;
+  overflow: hidden;
+  border-radius: 4px;
+  position: relative;
+}
+
+.Title {
+  display: inline-block;
+  margin-bottom: 4px;
+  transition: color 0.2s ease;
+}
+
+.card:hover .title {
+  color: var(--active);
+}
+
+.bottom {
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  row-gap: 2px;
+  opacity: 1;
+  transition: opacity 0.3s ease;
+}
+
+.card:hover .TMDBImage {
+  transform: scale(1.03);
+  transition: transform 0.5s ease;
+}
+
+.card:hover .TMDBImage {
+  filter: brightness(0.9);
+}

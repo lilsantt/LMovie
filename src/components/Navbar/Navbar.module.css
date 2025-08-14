@@ -1,0 +1,28 @@
+.list {
+  display: flex;
+  column-gap: 16px;
+  list-style: none;
+  color: white;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  column-gap: 8px;
+}
+
+.icon {
+  width: 18px;
+  height: 18px;
+  transition: color 0.2s;
+}
+
+.link {
+  transition: color 0.2s;
+}
+.item:hover .link {
+  color: var(--active);
+}
+.item:hover .icon {
+  color: var(--active);
+}
