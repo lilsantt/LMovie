@@ -12,7 +12,14 @@ type BackdropGalleryProps = {
   backdrops: Backdrop[];
 };
 
-const IMAGE_BASE_URL = "https://image.tmdb.org/t/p/w780";
+// Функция для получения URL через прокси
+const getImageUrl = (filePath: string, size: string = "w780") => {
+  return `/api/tmdb/images?path=${encodeURIComponent(filePath)}&size=${size}`;
+};
+
+const getOriginalImageUrl = (filePath: string) => {
+  return `/api/tmdb/images?path=${encodeURIComponent(filePath)}&size=original`;
+};
 
 const BackdropGallery: React.FC<BackdropGalleryProps> = ({ backdrops }) => {
   const [startIndex, setStartIndex] = useState<number | null>(null);
@@ -23,7 +30,7 @@ const BackdropGallery: React.FC<BackdropGalleryProps> = ({ backdrops }) => {
   }
 
   const lightboxImages = backdrops.map((img) => ({
-    src: `https://image.tmdb.org/t/p/original${img.file_path}`,
+    src: getOriginalImageUrl(img.file_path),
     alt: "Backdrop",
   }));
 
@@ -35,7 +42,7 @@ const BackdropGallery: React.FC<BackdropGalleryProps> = ({ backdrops }) => {
       {limitedBackdrops.map((backdrop, index) => (
         <img
           key={backdrop.file_path}
-          src={`${IMAGE_BASE_URL}${backdrop.file_path}`}
+          src={getImageUrl(backdrop.file_path)}
           alt="Backdrop"
           loading="lazy"
           className={styles.image}
