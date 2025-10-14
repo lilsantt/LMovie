@@ -1,35 +1,31 @@
 .range .MuiSlider-track {
   background: #e50914;
   border: none;
-  height: 4px; /* Толщина активной полосы */
+  height: 4px;
 }
 
 .range .MuiSlider-thumb {
   background: #e50914;
   width: 16px;
   height: 16px;
-  border: 2px solid white; /* Белая обводка для контраста */
+  border: 2px solid white;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
-/* Эффект при наведении на ползунок */
 .range .MuiSlider-thumb:hover {
   box-shadow: 0 0 0 8px rgba(229, 9, 20, 0.1);
 }
 
-/* Эффект при активном перетаскивании */
 .range .MuiSlider-thumb.Mui-active {
   box-shadow: 0 0 0 12px rgba(229, 9, 20, 0.2);
 }
 
-/* Неактивная часть слайдера (rail) */
 .range .MuiSlider-rail {
   background: #ccc;
   height: 4px;
   opacity: 0.8;
 }
 
-/* Стиль для valueLabel (подсказки над ползунком) */
 .range .MuiSlider-valueLabel {
   background: #e50914;
   color: white;

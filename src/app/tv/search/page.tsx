@@ -1,12 +1,11 @@
 import { discoverTVs } from "@/api/tmdb/discoverTV";
-import { getMovies } from "@/api/tmdb/getMovies";
 import Container from "@/components/Container/Container";
+import { NotFound } from "@/components/NotFound/NotFound";
 import Pagination from "@/components/Pagination/Pagination";
 import SearchList from "@/components/SearchList/SearchList";
 import Section from "@/components/Section/Section";
 import Sidebar from "@/components/Sidebar/Sidebar";
-import { TMDB_ENDPOINTS } from "@/constants/apiRoutes";
-import { PopularMoviesResponse } from "@/types/tmdb";
+import { SITE_NAME } from "@/constants/names";
 import React from "react";
 
 type TVSearchPageProps = {
@@ -19,6 +18,20 @@ type TVSearchPageProps = {
     p?: string;
   };
 };
+
+export async function generateMetadata(searchParams: TVSearchPageProps) {
+  const title = `Поиск сериалов — ${
+    searchParams.searchParams.p
+      ? "Страница   " + searchParams.searchParams.p || 1
+      : SITE_NAME
+  } | ${SITE_NAME}`;
+  const description = `Ищите сериалы быстро и удобно! Наш сервис использует TMDB API, чтобы предоставить актуальные данные о сериалах, трейлерах и описаниях.`;
+
+  return {
+    title,
+    description,
+  };
+}
 
 const TVSearchPage = async ({ searchParams }: TVSearchPageProps) => {
   const {
@@ -45,7 +58,7 @@ const TVSearchPage = async ({ searchParams }: TVSearchPageProps) => {
   };
 
   const films = await discoverTVs({ params: apiParams });
-  if (!films) return null;
+  if (!films) return <NotFound type="TV" />;
 
   return (
     <div className="flex">
@@ -56,24 +69,26 @@ const TVSearchPage = async ({ searchParams }: TVSearchPageProps) => {
         <main className="flex-1 flex">
           <Section
             title="Поиск сериалов"
-            subtitle={`Страница ${page} из ${films.total_pages}`}
+            subtitle={`Страница ${page || 1} из ${films.total_pages}`}
           >
             <SearchList items={films.results} type="tv" checkType />
           </Section>
-          <Pagination
-            currentPage={page}
-            totalPages={films.total_pages}
-            getPageLink={(newPage) => {
-              const params = new URLSearchParams();
-              if (genres) params.set("genres", genres);
-              if (year_gte) params.set("year_gte", year_gte);
-              if (year_lte) params.set("year_lte", year_lte);
-              if (rating_gte) params.set("rating_gte", rating_gte);
-              if (rating_lte) params.set("rating_lte", rating_lte);
-              params.set("p", newPage.toString());
-              return `./search?${params.toString()}`;
-            }}
-          />
+          <Section>
+            <Pagination
+              currentPage={page}
+              totalPages={films.total_pages}
+              getPageLink={(newPage) => {
+                const params = new URLSearchParams();
+                if (genres) params.set("genres", genres);
+                if (year_gte) params.set("year_gte", year_gte);
+                if (year_lte) params.set("year_lte", year_lte);
+                if (rating_gte) params.set("rating_gte", rating_gte);
+                if (rating_lte) params.set("rating_lte", rating_lte);
+                params.set("p", newPage.toString());
+                return `./search?${params.toString()}`;
+              }}
+            />
+          </Section>
         </main>
       </Container>
     </div>

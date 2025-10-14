@@ -36,8 +36,8 @@ export default function Range({
         max={max}
         step={stepValue}
         sx={{
-          color: "#e50914", // Цвет трека
-          height: 4, // Толщина трека
+          color: "#e50914",
+          height: 4,
           "& .MuiSlider-thumb": {
             backgroundColor: "#e50914",
             width: 16,

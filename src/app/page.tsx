@@ -2,7 +2,6 @@ import { getMovies } from "@/api/tmdb/getMovies";
 import { getUpcomingMoviesWithTrailers } from "@/api/tmdb/getUpcomingMovieTrailers";
 import { About } from "@/components/About/About";
 import Films from "@/components/Films/FilmsList";
-import FilmsSlider from "@/components/FilmsSlider/FilmsSlider";
 import PopularFilmList from "@/components/PopularFilmList/PopularFilmList";
 import Section from "@/components/Section/Section";
 import UpcomingTrailers from "@/components/UpcomingTrailers/UpcomingTrailers";

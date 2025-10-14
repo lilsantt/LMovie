@@ -2,14 +2,12 @@ import { DetailedGenres, MovieDetails } from "@/types/tmdb";
 import React from "react";
 import Rating from "../Rating/Rating";
 import TMDBImage from "../TMDBImage/TMDBImage";
-import Genres from "../Genres/Genres";
 import PersonList from "../PersonList/PersonList";
 import styles from "./FilmInfo.module.css";
 import Container from "../Container/Container";
 import Title from "../Title/Title";
 import Link from "next/link";
 import { getYear } from "@/utils/formatDate";
-import { getCert } from "@/utils/getCert";
 import { Timer } from "lucide-react";
 
 type Props = {
@@ -37,7 +35,6 @@ const FilmInfo = ({ movieDetails, type = "movie" }: Props) => {
   const producers = getPeopleListByJobName("Producer");
 
   const getRuntimeValue = (runtime: number) => {
-    console.log(runtime);
     const hours = Math.floor(runtime / 60);
     const minutes = runtime - hours * 60;
     return `${hours} ч. ${minutes} м. `;
@@ -102,15 +99,18 @@ const FilmInfo = ({ movieDetails, type = "movie" }: Props) => {
                   <ul className={styles.list}>
                     <li>
                       <span>Жанры</span>{" "}
-                      {movieDetails.genres.map((genre, i) => {
-                        if (typeof genre === "number") return null;
-                        return (
-                          <Link href={`/genres/${genre.id}`} key={genre.id}>
-                            {genre.name}
-                            {i !== movieDetails.genres.length - 1 && ",\u00A0"}
-                          </Link>
-                        );
-                      })}
+                      <div className="">
+                        {movieDetails.genres.map((genre, i) => {
+                          if (typeof genre === "number") return null;
+                          return (
+                            <Link href={`/genres/${genre.id}`} key={genre.id}>
+                              {genre.name}
+                              {i !== movieDetails.genres.length - 1 &&
+                                ",\u00A0"}
+                            </Link>
+                          );
+                        })}
+                      </div>
                     </li>
                     {movieDetails.overview ? (
                       <li>

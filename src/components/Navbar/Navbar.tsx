@@ -1,25 +1,84 @@
+"use client";
 import { paths } from "@/constants/paths";
 import Link from "next/link";
-import React from "react";
+import React, { useState } from "react";
 import styles from "./Navbar.module.css";
+import clsx from "clsx";
+import { usePathname } from "next/navigation";
+import SearchForm from "../SearchForm/SearchForm";
+import Logo from "../Logo/Logo";
+import Container from "../Container/Container";
 
 type Props = {};
 
 const Navbar = (props: Props) => {
+  const [isMenuOpen, setIsOpen] = useState(false);
+  const currentPath = usePathname();
+  const isActive = (url: string) => {
+    if (url === currentPath) {
+      return styles.active;
+    }
+    return "";
+  };
+
   return (
-    <nav>
+    <nav className={styles.nav}>
+      <button
+        className={styles.burger}
+        onClick={() => setIsOpen(true)}
+        aria-label="Открыть меню"
+      >
+        ☰
+      </button>
+      {/* Десктоп */}
       <ul className={styles.list}>
         {paths.map((path) => {
           return (
-            <li className={styles.item} key={path.id}>
+            <li
+              className={clsx(styles.item, isActive(path.path))}
+              key={path.id}
+            >
               <Link href={path.path} className={styles.link}>
                 {path.name}
+                <path.icon className={styles.icon} />
               </Link>
-              <path.icon className={styles.icon} />
             </li>
           );
         })}
       </ul>
+      {/* Мобильное */}
+      <div className={clsx(styles.overlay, isMenuOpen && styles.open)}>
+        <Container>
+          <div className={styles.top}>
+            <Logo />
+            <button
+              className={styles.close}
+              onClick={() => setIsOpen(false)}
+              aria-label="Закрыть меню"
+            >
+              ✕
+            </button>
+          </div>
+          <div className={styles.search}>
+            <SearchForm />
+          </div>
+          <ul className={styles.menu}>
+            {paths.map((path) => {
+              return (
+                <li
+                  className={clsx(styles.item, isActive(path.path))}
+                  key={path.id}
+                >
+                  <Link href={path.path} className={styles.link}>
+                    {path.name}
+                    <path.icon className={styles.icon} />
+                  </Link>
+                </li>
+              );
+            })}
+          </ul>
+        </Container>
+      </div>
     </nav>
   );
 };

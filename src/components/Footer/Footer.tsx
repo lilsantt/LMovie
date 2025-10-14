@@ -14,7 +14,7 @@ const Footer = (props: Props) => {
           <ul className={styles.list}>
             {footerPaths.map((path) => {
               return (
-                <li key={path.id}>
+                <li key={path.id} className={styles.cell}>
                   <h5>{path.name}</h5>
                   {path.childLinks && (
                     <ul className={styles.childList}>

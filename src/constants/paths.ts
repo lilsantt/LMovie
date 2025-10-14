@@ -19,7 +19,7 @@ export const footerPaths = [
     name: "Сериалы",
     id: 3,
     childLinks: [
-      { id: 4, name: "Популярные сериалы", link: "/movie/trending" },
+      { id: 4, name: "Популярные сериалы", link: "/tv/trending" },
       { id: 5, name: "Поиск сериалов", link: "/tv/search" },
     ],
   },

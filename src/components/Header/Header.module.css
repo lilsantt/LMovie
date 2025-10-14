@@ -11,3 +11,12 @@
   align-items: center;
   justify-content: space-between;
 }
+
+@media (max-width: 768px) {
+  .search {
+    display: none;
+  }
+}
+
+@media (max-width: 1600px) {
+}

@@ -1,50 +1,67 @@
 .main {
   width: 100%;
+  overflow: hidden;
 }
 
 .tabList {
   width: 100%;
   display: flex;
   align-items: center;
-  justify-content: center;
   list-style: none;
-  column-gap: 24px;
-  padding: 20px;
+  padding: 20px 20px 5px 20px;
   background-color: var(--);
+
+  overflow-x: auto;
+  /overflow-y: hidden;
+  scrollbar-width: thin;
+  scrollbar-color: #ccc transparent;
+  -webkit-overflow-scrolling: touch;
+
+  height: fit-content;
+  min-height: auto;
 }
 
-.contentList {
-  display: flex;
-  flex-direction: column;
-  row-gap: 20px;
-  list-style: none;
+.tabList::-webkit-scrollbar {
+  height: 4px;
+}
+
+.tabList::-webkit-scrollbar-track {
+  background: transparent;
+  margin: 0 20px;
+}
+
+.tabList::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 2px;
+}
+
+.tabList::-webkit-scrollbar-thumb:hover {
+  background: #999;
 }
 
 .tabList {
-  display: flex;
-  gap: 16px; /* Расстояние между табами */
-  padding: 0;
+  gap: 16px;
   margin: 0 0 24px 0;
-  list-style: none;
-  border-bottom: 1px solid #e0e0e0; /* Серая линия под табами */
+  white-space: nowrap;
+  flex-wrap: nowrap;
 }
 
 .tabItem {
-  padding: 12px 0;
+  padding: 12px 16px;
   position: relative;
   cursor: pointer;
-  color: #666; /* Серый неактивный цвет */
+  color: #666;
   font-weight: 500;
   font-size: 16px;
   transition: all 0.2s ease;
+  flex-shrink: 0;
+  min-width: max-content;
 }
 
-/* Эффект при наведении */
 .tabItem:hover {
-  color: #000; /* Чёрный при наведении */
+  color: #000;
 }
 
-/* Индикатор активного таба (если нужно) */
 .tabItem.active {
   color: #000;
   font-weight: 600;
@@ -57,10 +74,9 @@
   left: 0;
   width: 100%;
   height: 2px;
-  background: #000; /* Чёрная полоса для активного таба */
+  background: #000;
 }
 
-/* Альтернативный вариант ховера с кинематографическим акцентом */
 .tabItem:hover::after {
   content: "";
   position: absolute;
@@ -68,5 +84,12 @@
   left: 0;
   width: 100%;
   height: 2px;
-  background: linear-gradient(90deg, #000, #333); /* Градиентная полоса */
+  background: linear-gradient(90deg, #000, #333);
+}
+
+.contentList {
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+  list-style: none;
 }

@@ -1,7 +1,15 @@
 .main {
   display: flex;
   column-gap: 36px;
-  padding-top: 100px;
+  display: flex;
+  column-gap: 36px;
+  padding: 50px;
+  background: linear-gradient(
+    90deg,
+    rgba(136, 136, 136, 0.15),
+    rgba(136, 136, 136, 0)
+  );
+  border-radius: 16px;
 }
 
 .name {
@@ -20,9 +28,9 @@
 
 .list li span {
   display: inline-block;
-  min-width: 150px;
-  font-size: 18px;
-  font-weight: 700;
+  min-width: 180px;
+  font-size: 16px;
+  font-weight: 600;
   line-height: 21px;
   color: var(--mid);
 }
@@ -32,4 +40,36 @@
   font-size: 16px;
   font-weight: 400;
   line-height: 175%;
+}
+
+@media (max-width: 768px) {
+  .main {
+    flex-direction: column;
+    row-gap: 24px;
+    padding-top: 25px;
+    padding: 25px;
+  }
+  .avatar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .name {
+    font-size: 28px;
+
+    margin-bottom: 14px;
+  }
+
+  .list li span {
+    min-width: 150px;
+    font-size: 14px;
+    line-height: 16px;
+  }
+  .list li {
+    font-size: 14px;
+    line-height: 16px;
+    flex-direction: column;
+    row-gap: 8px;
+  }
 }

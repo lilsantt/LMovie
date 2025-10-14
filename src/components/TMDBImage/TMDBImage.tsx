@@ -14,7 +14,7 @@ export default function TMDBImage({
   alt = "",
   size = "w500",
   className = "",
-  fallbackSrc = "/imdb.svg",
+  fallbackSrc = "/placeholder.png",
 }: TMDBImageProps) {
   if (!path) {
     return (

@@ -1,7 +1,4 @@
-import { getUpcomingMoviesWithTrailers } from "@/api/tmdb/getUpcomingMovieTrailers";
 import React from "react";
-import TrailerPlayer from "../TrailerPlayer/TrailerPlayer";
-import TMDBImage from "../TMDBImage/TMDBImage";
 import SingleTrailerPlayer from "../SingleTrailerPlayer/SingleTrailerPlayer";
 import styles from "./UpcomingTrailers.module.css";
 import { MovieWithTrailer } from "@/types/tmdb";
@@ -17,7 +14,7 @@ const UpcomingTrailers = async ({ trailers }: UpcomingTrailersProps) => {
         return (
           <li className={styles.item} key={trailer.id}>
             <SingleTrailerPlayer video={trailer.trailer} />
-            <h4>{trailer.title}</h4>
+            <h4 className={styles.title}>{trailer.title}</h4>
           </li>
         );
       })}

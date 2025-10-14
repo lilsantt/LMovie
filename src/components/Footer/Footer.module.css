@@ -38,3 +38,35 @@
   flex-direction: column;
   row-gap: 14px;
 }
+
+@media (max-width: 1024px) {
+  .list h5 {
+    font-size: 16px;
+  }
+
+  .link {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 768px) {
+  .list h5 {
+    margin-bottom: 12px;
+  }
+  .list {
+    flex-direction: column;
+    row-gap: 20px;
+  }
+  .inner {
+    flex-direction: column-reverse;
+    row-gap: 20px;
+    align-items: start;
+  }
+  .childList {
+    flex-direction: row;
+    display: flex;
+    column-gap: 26px;
+    justify-content: space-between;
+    align-items: center;
+  }
+}

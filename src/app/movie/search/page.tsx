@@ -1,11 +1,12 @@
 import { discoverMovies } from "@/api/tmdb/discoverMovies";
-import { getMovies } from "@/api/tmdb/getMovies";
+import Container from "@/components/Container/Container";
+import { NotFound } from "@/components/NotFound/NotFound";
 import Pagination from "@/components/Pagination/Pagination";
 import SearchList from "@/components/SearchList/SearchList";
+import SearchListSkeleton from "@/components/SearchList/Skeleton/SearchListSkeleton";
 import Section from "@/components/Section/Section";
 import Sidebar from "@/components/Sidebar/Sidebar";
-import { TMDB_ENDPOINTS } from "@/constants/apiRoutes";
-import { PopularMoviesResponse } from "@/types/tmdb";
+import { SITE_NAME } from "@/constants/names";
 import React from "react";
 
 type MovieSearchPageProps = {
@@ -18,6 +19,20 @@ type MovieSearchPageProps = {
     p?: string;
   };
 };
+
+export async function generateMetadata(searchParams: MovieSearchPageProps) {
+  const title = `Поиск фильмов — ${
+    searchParams.searchParams.p
+      ? "Страница   " + searchParams.searchParams.p || 1
+      : SITE_NAME
+  } | ${SITE_NAME}`;
+  const description = `Ищите сериалы быстро и удобно! Наш сервис использует TMDB API, чтобы предоставить актуальные данные о сериалах, трейлерах и описаниях.`;
+
+  return {
+    title,
+    description,
+  };
+}
 
 const MovieSearchPage = async ({ searchParams }: MovieSearchPageProps) => {
   const {
@@ -46,32 +61,42 @@ const MovieSearchPage = async ({ searchParams }: MovieSearchPageProps) => {
 
   const films = await discoverMovies({ params: apiParams });
 
-  if (!films) return null;
+  if (!films) return <NotFound type="SEARCH" />;
   return (
     <div>
-      <div className="">
-        <Sidebar />
-      </div>
-      <Section
-        title={`Поиск фильмов`}
-        subtitle={`Страница ${searchParams.p} из ${films.total_pages}`}
-      >
-        <SearchList items={films?.results} checkType />
-      </Section>
-      <Pagination
-        currentPage={films.page}
-        totalPages={films.total_pages}
-        getPageLink={(newPage) => {
-          const params = new URLSearchParams();
-          if (genres) params.set("genres", genres);
-          if (year_gte) params.set("year_gte", year_gte);
-          if (year_lte) params.set("year_lte", year_lte);
-          if (rating_gte) params.set("rating_gte", rating_gte);
-          if (rating_lte) params.set("rating_lte", rating_lte);
-          params.set("p", newPage.toString());
-          return `./search?${params.toString()}`;
-        }}
-      />
+      <Container>
+        <div className="">
+          <Sidebar />
+        </div>
+        <main>
+          <Section
+            title={`Поиск фильмов`}
+            subtitle={`Страница ${searchParams.p || 1} из ${films.total_pages}`}
+          >
+            {films?.results ? (
+              <SearchList items={films?.results} checkType />
+            ) : (
+              <SearchListSkeleton />
+            )}
+          </Section>
+          <Section>
+            <Pagination
+              currentPage={films.page}
+              totalPages={films.total_pages}
+              getPageLink={(newPage) => {
+                const params = new URLSearchParams();
+                if (genres) params.set("genres", genres);
+                if (year_gte) params.set("year_gte", year_gte);
+                if (year_lte) params.set("year_lte", year_lte);
+                if (rating_gte) params.set("rating_gte", rating_gte);
+                if (rating_lte) params.set("rating_lte", rating_lte);
+                params.set("p", newPage.toString());
+                return `./search?${params.toString()}`;
+              }}
+            />
+          </Section>
+        </main>
+      </Container>
     </div>
   );
 };

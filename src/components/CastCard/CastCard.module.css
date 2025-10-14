@@ -1,0 +1,113 @@
+.mini {
+  border: 2px solid #e5e5e5;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #fff;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  cursor: pointer;
+  display: flex;
+  margin-bottom: 8px;
+}
+
+.mini:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.title {
+  max-width: 250px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  transition: 0.2s ease;
+  font-size: 16px;
+  margin-bottom: 6x;
+}
+
+.card:hover .title {
+  color: var(--active);
+}
+
+.role {
+  max-width: 250px;
+  display: inline-block;
+  width: 100%;
+  font-size: 12px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+@media (max-width: 1600px) {
+  .mini {
+    max-width: 230px;
+    height: 340px;
+  }
+  .role,
+  .title {
+    max-width: 230px;
+  }
+}
+
+@media (max-width: 1280px) {
+  .mini {
+    max-width: 200px;
+    height: 300px;
+  }
+
+  .role,
+  .title {
+    max-width: 200px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .mini {
+    max-width: 180px;
+    height: 270px;
+  }
+
+  .role,
+  .title {
+    max-width: 180px;
+  }
+}
+
+@media (max-width: 768px) {
+  .mini {
+    max-width: 160px;
+    height: 200px;
+  }
+
+  .title {
+    max-width: 160px;
+  }
+
+  .role {
+    width: 160px;
+  }
+  .Title {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 640px) {
+  .mini {
+    max-width: 140px;
+  }
+
+  .title {
+    max-width: 140px;
+  }
+  .role {
+    max-width: 140px;
+  }
+  .Title {
+    font-size: 13px;
+  }
+
+  .role {
+    font-size: 12px;
+  }
+}

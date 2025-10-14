@@ -1,5 +1,4 @@
 import { Endpoint } from "@/types/tmdb";
-import { title } from "process";
 
 interface TMDBEndpoints {
   POPULAR_MOVIES: Endpoint;

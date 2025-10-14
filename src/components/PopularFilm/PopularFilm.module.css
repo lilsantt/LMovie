@@ -42,3 +42,27 @@
   font-weight: 500;
   line-height: 18px;
 }
+
+@media (max-width: 1024px) {
+  .info {
+    top: unset;
+    bottom: 100px;
+    left: 80px;
+  }
+}
+@media (max-width: 768px) {
+  .info {
+    position: absolute;
+    max-width: 90vw;
+    width: 90vw;
+    padding: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 80px;
+    top: unset;
+    min-height: unset;
+  }
+  .description {
+    font-size: 12px;
+  }
+}

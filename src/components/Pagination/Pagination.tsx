@@ -16,7 +16,10 @@ const Pagination = ({
   if (totalPages <= 1) return null;
 
   const maxVisible = 7;
+  const maxPagesCount = 500;
   const pages: (number | string)[] = [];
+
+  if (totalPages > maxPagesCount) totalPages = maxPagesCount;
 
   const addPage = (page: number | string) => {
     pages.push(page);

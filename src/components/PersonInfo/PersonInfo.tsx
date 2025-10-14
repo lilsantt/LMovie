@@ -2,6 +2,8 @@ import React from "react";
 import TMDBImage from "../TMDBImage/TMDBImage";
 import { PersonDetails } from "@/types/tmdb";
 import styles from "./PersonInfo.module.css";
+import ExpandableText from "../ui/ExpendText/ExpendText";
+import { getFormatedDate } from "@/utils/getFormatedDate";
 
 type PersonInfoProps = {
   personDetails: PersonDetails;
@@ -26,21 +28,27 @@ const PersonInfo = ({ personDetails }: PersonInfoProps) => {
             </li>
           )}
           <li>
-            <span>Дата рождения: </span>
-            {personDetails.birthday || "Не указано"}
+            <span>Дата рождения</span>
+            {personDetails.birthday
+              ? getFormatedDate(personDetails.birthday)
+              : "Не указано"}
           </li>
           {personDetails.deathday && (
             <li>
-              <span>Дата смерти: </span>
-              {personDetails.deathday || "Не указано"}
+              <span>Дата смерти</span>
+              {getFormatedDate(personDetails.deathday)}
             </li>
           )}
           <li>
-            <span>Биография: </span>
-            <p>{personDetails.biography || "Не указано"}</p>
+            <span>Биография</span>
+            {personDetails.biography ? (
+              <ExpandableText text={personDetails.biography} />
+            ) : (
+              "Не указано"
+            )}
           </li>
           <li>
-            <span>Работа:</span>
+            <span>Работа</span>
             {personDetails.known_for_department}
           </li>
         </ul>

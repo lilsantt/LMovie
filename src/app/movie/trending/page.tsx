@@ -1,4 +1,5 @@
 import { getMovies } from "@/api/tmdb/getMovies";
+import { NotFound } from "@/components/NotFound/NotFound";
 import Pagination from "@/components/Pagination/Pagination";
 import SearchList from "@/components/SearchList/SearchList";
 import Section from "@/components/Section/Section";
@@ -24,12 +25,12 @@ const MovieTrending = async ({ searchParams }: MovieTrendingPageProps) => {
     params: { page: searchParams.p || 1 },
     endpoint: TMDB_ENDPOINTS.POPULAR_MOVIES,
   });
-  if (!movies) return;
+  if (!movies) return <NotFound type="FILMS" />;
   return (
     <div>
       <Section
         title="Популярные фильмы"
-        subtitle={`Страница ${movies.page} из ${movies.total_pages}`}
+        subtitle={`Страница ${movies.page || 1} из ${movies.total_pages || 1}`}
       >
         <SearchList items={movies.results} checkType />
       </Section>

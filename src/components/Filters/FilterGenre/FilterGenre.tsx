@@ -1,8 +1,7 @@
 "use client";
-import { getMovieGenres } from "@/api/tmdb/getGenres";
 import { Genre } from "@/types/tmdb";
 import Link from "next/link";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 
 type FilterGenreProps = {
   genres: Genre[];

@@ -20,14 +20,20 @@
   transition: background 0.2s;
 }
 
+.pagination {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
 .pagination a:hover {
-  background: #f0f0f0;
+  background: var(--active);
 }
 
 .pagination .active {
-  background: #0070f3;
+  background: var(--active);
   color: white;
-  border-color: #0070f3;
+  border-color: var(--active);
 }
 
 .pagination .ellipsis {

@@ -2,8 +2,7 @@ import { CastDetails } from "@/types/tmdb";
 import React from "react";
 import TMDBImage from "../TMDBImage/TMDBImage";
 import Link from "next/link";
-import { TMDB_BASE_URL } from "@/utils/axiosClient";
-import { TMDB_ENDPOINTS } from "@/constants/apiRoutes";
+import styles from "./CastCard.module.css";
 
 type CastCardProps = {
   castItem: CastDetails;
@@ -12,10 +11,14 @@ type CastCardProps = {
 const CastCard = ({ castItem }: CastCardProps) => {
   return (
     <div>
-      <Link href={`/person/${castItem.id}`}>
-        <TMDBImage path={castItem.profile_path} className="mini" />
-        <h4>{castItem.name}</h4>
-        <span>{castItem.character || "Роль не указана"}</span>
+      <Link href={`/person/${castItem.id}`} className={styles.card}>
+        <div className={styles.mini}>
+          <TMDBImage path={castItem.profile_path} className="p_mini" />
+        </div>
+        <h4 className={styles.title}>{castItem.name}</h4>
+        <span className={styles.role}>
+          {castItem.character || "Роль не указана"}
+        </span>
       </Link>
     </div>
   );

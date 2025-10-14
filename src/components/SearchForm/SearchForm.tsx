@@ -12,7 +12,7 @@ const SearchForm = ({ searchParams }: SearchFormProps) => {
   const searchQuery = useSearchParams().get("s");
   return (
     <div>
-      <form action="/genres/1" method="GET" className={styles.form}>
+      <form action="/search/1" method="GET" className={styles.form}>
         <input
           name="s"
           placeholder="Поиск..."

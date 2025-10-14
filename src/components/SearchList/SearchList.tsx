@@ -1,9 +1,4 @@
-import {
-  MovieRusult,
-  MultiSearchResponse,
-  MultiSearchResult,
-  PersonDetails,
-} from "@/types/tmdb";
+import { MovieRusult, MultiSearchResult, PersonDetails } from "@/types/tmdb";
 import React from "react";
 import FilmsCard from "../FilmsCard/FilmsCard";
 import PersonCard from "../PersonCard/PersonCard";
@@ -20,9 +15,9 @@ const SearchList = ({
   checkType = false,
   type = "movie",
 }: SearchListProps) => {
-  console.log(items);
   return (
     <div className={styles.cont}>
+      {items.length === 0 && <p>Ничего не найдено</p>}
       <ul className={styles.list}>
         {items.map((item) => {
           if (checkType)

@@ -39,3 +39,14 @@
   width: 36px;
   height: 18px;
 }
+
+@media (max-width: 768px) {
+  .mini .value {
+    font-size: 12px;
+  }
+
+  .mini .image {
+    width: 30px;
+    height: 15px;
+  }
+}

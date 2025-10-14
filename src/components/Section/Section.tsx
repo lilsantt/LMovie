@@ -22,7 +22,7 @@ const Section = ({ title, link = "", children, subtitle }: SectionProps) => {
             <span>{subtitle}</span>
             {link && (
               <Link href={link} className={styles.link}>
-                Посмотреть все <ArrowRight />
+                Посмотреть все <ArrowRight className={styles.icon} />
               </Link>
             )}
           </div>

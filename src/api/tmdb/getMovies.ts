@@ -38,7 +38,8 @@ export async function getMovies({
     );
 
     const data = await res.json();
-    const results = data.results.slice(0, count);
+    console.log(data);
+    const results = data?.results?.length ? data.results.slice(0, count) : [];
     return { ...data, results };
   } catch (error) {
     handleAxiosError(error, endpoint.context);

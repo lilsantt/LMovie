@@ -1,13 +1,12 @@
 "use client";
 import { useGenres } from "@/context/GenresContext";
-import { Genre } from "@/types/tmdb";
 import React from "react";
 import styles from "./Genres.module.css";
 
 type GenresProps = {
   filmGenres: number[];
   type: "movie" | "tv" | null;
-  count?: 1 | -1;
+  count?: number;
 };
 
 const Genres = ({ filmGenres, type, count = -1 }: GenresProps) => {

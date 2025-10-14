@@ -11,6 +11,16 @@
   align-items: center;
 }
 
+.content {
+  min-width: 0;
+}
+
+.title {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
 .link:hover {
   background: #f8f8f8;
   transform: translateX(4px);
@@ -22,32 +32,28 @@
   right: 10px;
   opacity: 0.7;
   transition: all 0.3s ease;
-  transform: translateX(0);
+  transform: translateX(-8px);
 }
 
 .link:hover .arrow {
   opacity: 1;
-  transform: translateX(4px);
+  transform: translateX(-4px);
   color: #e50914;
 }
 
-/* Эффект для изображения */
 .link:hover .TMDBImage.list {
-  transform: scale(1.03); /* Легкое увеличение */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Тень для объема */
+  transform: scale(1.03);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-/* Эффект для текста */
 .link:hover h3 {
-  color: #e50914; /* Красный акцент (можно заменить на ваш основной цвет) */
+  color: #e50914;
 }
 
-/* Стиль для рейтинга при наведении */
 .link:hover .info span:first-child {
-  font-weight: 500; /* Увеличение жирности года */
+  font-weight: 500;
 }
 
-/* Плавные переходы для всех анимируемых элементов */
 .link h3 {
   transition: all 0.3s ease;
 }
@@ -58,4 +64,29 @@
   column-gap: 10px;
   margin-top: 4px;
   margin-bottom: 6px;
+}
+
+@media (max-width: 768px) {
+  .link {
+    align-items: start;
+    padding: 4px;
+  }
+  .link span {
+    font-size: 12px;
+  }
+  .title {
+    max-width: 200px;
+  }
+  .link h3 {
+    font-size: 16px;
+  }
+  .info {
+    margin-bottom: 0;
+  }
+  .arrow {
+    top: 50%;
+    transform: translateY(-50%);
+    width: 16px;
+    height: 16px;
+  }
 }

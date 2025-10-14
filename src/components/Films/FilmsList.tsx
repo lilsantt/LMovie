@@ -5,6 +5,7 @@ import styles from "./FilmsList.module.css";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import FilmsCard from "../FilmsCard/FilmsCard";
 import { MovieRusult } from "@/types/tmdb";
+import FilmsCardSkeleton from "../FilmsCard/Skeleton/FilmsCardSkeleton";
 
 type Props = {
   films: MovieRusult[];
@@ -31,11 +32,17 @@ const FilmsSlider = ({ films, type }: Props) => {
       </button>
 
       <div className={styles.slider} ref={sliderRef}>
-        {films.map((film) => (
-          <div key={film.id} className={styles.slide}>
-            <FilmsCard movieItem={film} type={type} />
-          </div>
-        ))}
+        {!films.length
+          ? Array.from({ length: 10 }).map((_, i) => (
+              <div key={i} className={styles.slide}>
+                <FilmsCardSkeleton />
+              </div>
+            ))
+          : films.map((film) => (
+              <div key={film.id} className={styles.slide}>
+                <FilmsCard movieItem={film} type={type} />
+              </div>
+            ))}
       </div>
 
       <button className={styles.navButton} onClick={() => scroll("right")}>

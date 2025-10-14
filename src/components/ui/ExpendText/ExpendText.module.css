@@ -1,0 +1,37 @@
+.container {
+  position: relative;
+  padding-bottom: 40px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+.button {
+  position: absolute;
+  bottom: 0px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: transparent;
+  color: var(--active);
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  column-gap: 6px;
+  padding: 6px 12px;
+  border-radius: 50px;
+  transition: 0.3s all;
+}
+
+.button:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.icon {
+  width: 18px;
+  height: 18px;
+}
+.text {
+  overflow: hidden;
+}

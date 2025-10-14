@@ -18,6 +18,6 @@
 }
 
 .list.open {
-  max-height: 1000px; /* Достаточно большое значение */
+  max-height: 1000px;
   opacity: 1;
 }

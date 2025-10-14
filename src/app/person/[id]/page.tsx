@@ -1,13 +1,12 @@
-import { getPersonDetails } from "@/api/tmdb/getPersonDetails";
 import BackdropGallery from "@/components/BackdropGallery/BackdropGallery";
 import Container from "@/components/Container/Container";
+import { NotFound } from "@/components/NotFound/NotFound";
 import PersonInfo from "@/components/PersonInfo/PersonInfo";
 import Section from "@/components/Section/Section";
 import Tabs from "@/components/Tabs/Tabs";
-import TMDBImage from "@/components/TMDBImage/TMDBImage";
 import { getCachedPersonDetails } from "@/utils/getCachedQueries";
 import { Metadata } from "next";
-import React from "react";
+import React, { Suspense } from "react";
 
 type PersonProps = {
   params: {
@@ -40,14 +39,26 @@ export async function generateMetadata({
 const PersonPage = async ({ params }: PersonProps) => {
   const { id } = params;
   const personDetails = await getCachedPersonDetails(id);
-  if (!personDetails) return;
+  if (!personDetails) return <NotFound type="PERSON" />;
 
   return (
     <div>
       <Container>
-        <PersonInfo personDetails={personDetails} />
+        <Section>
+          <PersonInfo personDetails={personDetails} />
+        </Section>
         <Section title="Изображения">
-          <BackdropGallery backdrops={personDetails.images.profiles} />
+          <Suspense
+            fallback={
+              <div
+                style={{ textAlign: "center", color: "red", fontSize: "40px" }}
+              >
+                Загрузка...
+              </div>
+            }
+          >
+            <BackdropGallery backdrops={personDetails.images.profiles} />
+          </Suspense>
         </Section>
         {personDetails.combined_credits?.cast.length > 0 ||
         personDetails.combined_credits?.crew.length > 0 ? (

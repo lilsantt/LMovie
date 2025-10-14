@@ -8,6 +8,16 @@ interface Props {
   className?: string;
 }
 
+export async function generateMetadata() {
+  const title = `О нас — ${SITE_NAME}`;
+  const description = `Этот сайт — часть моего портфолио, созданный на Next.js с использованием TMDB API. Здесь вы найдете подборки фильмов, трейлеры и описания с актуальной информацией. Проект демонстрирует навыки в разработке современного UI, интеграции API и оптимизации производительности. В планах — расширение функционала для удобства пользователей.`;
+
+  return {
+    title,
+    description,
+  };
+}
+
 export default function Page({ className }: Props) {
   return (
     <main className={styles.container}>

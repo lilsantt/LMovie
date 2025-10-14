@@ -19,3 +19,17 @@
   margin-top: 50px;
   margin-bottom: 50px;
 }
+
+@media (max-width: 768px) {
+  .section {
+    margin: 36px 0;
+  }
+  .link {
+    font-size: 14px;
+    font-weight: 600;
+    column-gap: 8px;
+  }
+  .icon {
+    width: 18px;
+  }
+}

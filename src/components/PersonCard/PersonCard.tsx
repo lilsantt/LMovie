@@ -16,15 +16,15 @@ const PersonCard = ({ person }: PersonCardProps) => {
           <TMDBImage
             path={person.profile_path}
             alt={person.name}
-            className={"mini"}
+            className={"p_mini"}
           />
         </Link>
       </div>
       <div className=""></div>
-      <Link href={`/person/${person.id}`}>
+      <Link href={`/person/${person.id}`} className={styles.title}>
         <Title title={person.name || "Не указано"} tag="h3" />
       </Link>
-      <span>{person.known_for_department}</span>
+      <span className={styles.role}>{person.known_for_department}</span>
     </div>
   );
 };

@@ -13,7 +13,9 @@ const Header = (props: Props) => {
       <Container>
         <div className={styles.inner}>
           <Logo />
-          <SearchForm />
+          <div className={styles.search}>
+            <SearchForm />
+          </div>
           <Navbar />
         </div>
       </Container>

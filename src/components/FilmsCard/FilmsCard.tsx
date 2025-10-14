@@ -1,4 +1,4 @@
-import { Genre, MovieRusult } from "@/types/tmdb";
+import { MovieRusult } from "@/types/tmdb";
 import React from "react";
 import TMDBImage from "../TMDBImage/TMDBImage";
 import Rating from "../Rating/Rating";
@@ -6,7 +6,6 @@ import Title from "../Title/Title";
 import styles from "./FilmsCard.module.css";
 import Genres from "../Genres/Genres";
 import Link from "next/link";
-import { title } from "process";
 
 type FilmsCardProps = {
   movieItem: MovieRusult;
@@ -22,7 +21,7 @@ const FilmsCard = ({ movieItem, type }: FilmsCardProps) => {
           <TMDBImage
             path={movieItem.poster_path}
             alt={movieItem.title}
-            className={"mini"}
+            className={"p_mini"}
           />
         </Link>
       </div>
@@ -32,7 +31,9 @@ const FilmsCard = ({ movieItem, type }: FilmsCardProps) => {
         className={styles.title}
         title={title}
       >
-        <Title title={title} tag="h3" length={22} />
+        <div className={styles.title_wrapper}>
+          <Title title={title} tag="h3" length={22} />
+        </div>
       </Link>
       <div className={styles.bottom}>
         <Rating rating={movieItem.vote_average} color="black" size="mini" />

@@ -3,7 +3,6 @@
   display: flex;
   align-items: center;
   width: 100%;
-  /* margin: 24px 0; */
 }
 
 .slider {
@@ -13,10 +12,10 @@
   gap: 28px;
   padding: 10px;
   scroll-behavior: smooth;
-  scrollbar-width: none; /* Firefox */
+  scrollbar-width: none;
 }
 .slider::-webkit-scrollbar {
-  display: none; /* Chrome/Safari */
+  display: none;
 }
 
 .slide {

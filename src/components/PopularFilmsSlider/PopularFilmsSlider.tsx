@@ -14,6 +14,9 @@ const PopularFilmsSlider = ({ films }: Props) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const intervalRef = useRef<NodeJS.Timeout | null>(null);
 
+  const touchStartX = useRef<number | null>(null);
+  const touchEndX = useRef<number | null>(null);
+
   const goToSlide = (index: number) => {
     setCurrentIndex(index);
     resetInterval();
@@ -41,8 +44,38 @@ const PopularFilmsSlider = ({ films }: Props) => {
     };
   }, []);
 
+  const handleTouchStart = (e: React.TouchEvent) => {
+    touchStartX.current = e.touches[0].clientX;
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    touchEndX.current = e.touches[0].clientX;
+  };
+
+  const handleTouchEnd = () => {
+    if (touchStartX.current === null || touchEndX.current === null) return;
+
+    const delta = touchStartX.current - touchEndX.current;
+
+    if (Math.abs(delta) > 50) {
+      if (delta > 0) {
+        nextSlide();
+      } else {
+        prevSlide();
+      }
+    }
+
+    touchStartX.current = null;
+    touchEndX.current = null;
+  };
+
   return (
-    <div className={styles.slider}>
+    <div
+      className={styles.slider}
+      onTouchStart={handleTouchStart}
+      onTouchMove={handleTouchMove}
+      onTouchEnd={handleTouchEnd}
+    >
       <div
         className={styles.sliderInner}
         style={{ transform: `translateX(-${currentIndex * 100}%)` }}

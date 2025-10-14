@@ -1,4 +1,4 @@
-import { CastDetails, CrewDetails } from "@/types/tmdb";
+import { CrewDetails } from "@/types/tmdb";
 import Link from "next/link";
 import React from "react";
 import styles from "./PersonList.module.css";

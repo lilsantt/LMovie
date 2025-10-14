@@ -1,8 +1,5 @@
-import { getMovies } from "@/api/tmdb/getMovies";
 import React from "react";
-import PopularFilm from "../PopularFilm/PopularFilm";
 import PopularFilmsSlider from "../PopularFilmsSlider/PopularFilmsSlider";
-import { TMDB_ENDPOINTS } from "@/constants/apiRoutes";
 import { MovieRusult } from "@/types/tmdb";
 
 type PopularFilmListProps = {

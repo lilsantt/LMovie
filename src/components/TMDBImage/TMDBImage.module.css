@@ -4,11 +4,26 @@
   object-fit: cover;
 }
 
+.fw_main {
+  width: 100%;
+  max-height: 700px;
+  object-fit: cover;
+}
+
 .fz {
   width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .mini {
+  width: 250px;
+  height: 370px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.p_mini {
   width: 250px;
   height: 370px;
 }
@@ -17,4 +32,91 @@
   width: 80px;
   height: 80px;
   object-fit: cover;
+}
+
+@media (max-width: 1280px) {
+  .fw {
+    height: 400px;
+    width: fit-content;
+    object-fit: contain;
+  }
+
+  .fz {
+    height: max-content;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+@media (max-width: 1600px) {
+  .mini {
+    max-width: 230px;
+    height: 340px;
+  }
+  .p_mini {
+    max-width: 230px;
+    height: 340px;
+  }
+}
+
+@media (max-width: 1280px) {
+  .mini {
+    max-width: 200px;
+    height: 300px;
+  }
+  .p_mini {
+    max-width: 200px;
+    height: 300px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .mini {
+    max-width: 180px;
+    height: 270px;
+  }
+
+  .fw_main {
+    height: 600px;
+  }
+  .p_mini {
+    max-width: 180px;
+    height: 270px;
+  }
+}
+
+@media (max-width: 768px) {
+  .mini {
+    max-width: 50%;
+    width: 50%;
+    height: auto;
+  }
+  .p_mini {
+    height: auto;
+    width: 100%;
+    object-fit: cover;
+  }
+  .fz {
+    width: 100%;
+  }
+  .fw {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+  }
+  .fw_main {
+    max-width: 100vw;
+    width: 100vw;
+    height: 100vh;
+  }
+
+  .list {
+    width: 60px;
+    height: 60px;
+    min-width: 60px;
+    min-height: 60px;
+  }
+}
+
+@media (max-width: 640px) {
 }

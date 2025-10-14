@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import styles from "./BackdropGallery.module.css";
 import LightboxSlider from "../Lightbox/LightboxSlider";
+import useMediaQuery from "@/hooks/useMediaQuery";
 
 type Backdrop = {
   file_path: string;
@@ -11,10 +12,15 @@ type BackdropGalleryProps = {
   backdrops: Backdrop[];
 };
 
+interface BackdropGalleryComponent extends React.FC<BackdropGalleryProps> {
+  Skeleton: () => React.ReactElement;
+}
+
 const IMAGE_BASE_URL = "https://image.tmdb.org/t/p/w780";
 
-const BackdropGallery = ({ backdrops }: BackdropGalleryProps) => {
+const BackdropGallery: BackdropGalleryComponent = ({ backdrops }) => {
   const [startIndex, setStartIndex] = useState<number | null>(null);
+  console.log(startIndex);
   if (!backdrops || backdrops.length === 0) {
     return <p>Изображения не найдены.</p>;
   }
@@ -24,7 +30,9 @@ const BackdropGallery = ({ backdrops }: BackdropGalleryProps) => {
     alt: "Backdrop",
   }));
 
-  const limitedBackdrops = backdrops.slice(0, 10);
+  const isMobile = useMediaQuery("(max-width: 768px)");
+  const visibleCount = isMobile ? 4 : 10;
+  const limitedBackdrops = backdrops.slice(0, visibleCount);
 
   return (
     <div className={styles.grid}>
@@ -38,13 +46,23 @@ const BackdropGallery = ({ backdrops }: BackdropGalleryProps) => {
           onClick={() => setStartIndex(index)}
         />
       ))}
-      {startIndex && (
+      {startIndex !== null && (
         <LightboxSlider
           images={lightboxImages}
           startIndex={startIndex}
           onClose={() => setStartIndex(null)}
         />
       )}
+    </div>
+  );
+};
+
+BackdropGallery.Skeleton = () => {
+  return (
+    <div className={styles.grid}>
+      {[...Array(10)].map((_, index) => (
+        <div key={index} className={styles.skeleton} />
+      ))}
     </div>
   );
 };

@@ -5,3 +5,9 @@
   letter-spacing: 0.5px;
   position: relative;
 }
+
+@media (max-width: 768px) {
+  .text {
+    font-size: 12px;
+  }
+}

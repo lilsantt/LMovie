@@ -11,3 +11,9 @@
 .link {
   transition: color 0.3s;
 }
+
+@media (max-width: 768px) {
+  .link {
+    font-size: 14px;
+  }
+}

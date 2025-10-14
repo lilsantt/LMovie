@@ -1,3 +1,10 @@
+"use client";
+
+import { useState } from "react";
+import { Play } from "lucide-react";
+import styles from "./SingleTrailerPlayer.module.css";
+
+import TrailerModal from "../TrailerModal/TrailerModal";
 import { Video } from "@/types/tmdb";
 
 interface SingleTrailerPlayerProps {
@@ -7,25 +14,30 @@ interface SingleTrailerPlayerProps {
 export default function SingleTrailerPlayer({
   video,
 }: SingleTrailerPlayerProps) {
+  const [isOpen, setIsOpen] = useState(false);
+
   if (!video) return <p>Трейлер не найден</p>;
 
+  const thumbnail = `https://img.youtube.com/vi/${video.key}/hqdefault.jpg`;
+
   return (
-    <div>
-      <iframe
-        width="100%"
-        height="500"
-        src={`https://www.youtube.com/embed/${video.key}?rel=0&showinfo=0&modestbranding=1&controls=1`}
-        title={video.name}
-        frameBorder="0"
-        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-        allowFullScreen
-        style={{
-          borderRadius: "12px",
-          width: "100%",
-          maxWidth: "500px",
-          height: "168px",
-        }}
-      ></iframe>
-    </div>
+    <>
+      <div className={styles.preview} onClick={() => setIsOpen(true)}>
+        <img src={thumbnail} alt={video.name} className={styles.thumbnail} />
+        <div className={styles.overlay}>
+          <Play size={64} strokeWidth={1.5} />
+        </div>
+      </div>
+
+      {isOpen && (
+        <TrailerModal
+          videoKey={video.key}
+          onClose={() => {
+            setIsOpen(false);
+            document.body.style.overflow = "unset";
+          }}
+        />
+      )}
+    </>
   );
 }
