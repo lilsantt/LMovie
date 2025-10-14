@@ -6,23 +6,33 @@ import { TMDB_ENDPOINTS } from "@/constants/apiRoutes";
 import { SITE_NAME } from "@/constants/names";
 import React from "react";
 
-type TVTrendingPageProps = {
-  searchParams: { s?: string; p?: string };
+type SearchParams = {
+  p?: string;
 };
 
-export async function generateMetadata({ searchParams }: TVTrendingPageProps) {
+type Props = {
+  searchParams: Promise<SearchParams>;
+};
+
+export async function generateMetadata({ searchParams }: Props) {
+  const resolvedParams = await searchParams;
+
   return {
-    title: `Популярные сериалы - Страница ${searchParams.p || 1}`,
+    title: `Популярные сериалы - Страница ${resolvedParams.p || 1}`,
     description: `Лучшие сериалы прямо сейчас. Откройте для себя топовые телешоу на ${SITE_NAME}: драмы, комедии и новинки.`,
   };
 }
 
-const TVTrendingPage = async ({ searchParams }: TVTrendingPageProps) => {
+const TVTrendingPage = async ({ searchParams }: Props) => {
+  const resolvedParams = await searchParams;
+
   const movies = await getMovies({
-    params: { page: searchParams.p || 1 },
+    params: { page: resolvedParams.p || 1 },
     endpoint: TMDB_ENDPOINTS.TRENDING_TV_SHOWS,
   });
+
   if (!movies) return;
+
   return (
     <div>
       <Section

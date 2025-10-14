@@ -7,25 +7,33 @@ import { TMDB_ENDPOINTS } from "@/constants/apiRoutes";
 import { SITE_NAME } from "@/constants/names";
 import React from "react";
 
-type MovieTrendingPageProps = {
-  searchParams: { s?: string; p?: string };
+type SearchParams = {
+  p?: string;
 };
 
-export async function generateMetadata({
-  searchParams,
-}: MovieTrendingPageProps) {
+type Props = {
+  searchParams: Promise<SearchParams>;
+};
+
+export async function generateMetadata({ searchParams }: Props) {
+  const resolvedParams = await searchParams;
+
   return {
-    title: `Популярные фильмы - Страница ${searchParams.p || 1}`,
+    title: `Популярные фильмы - Страница ${resolvedParams.p || 1}`,
     description: `Смотрите самые популярные фильмы на ${SITE_NAME}. Новинки, рейтинговые хиты и лучшие киноленты недели.`,
   };
 }
 
-const MovieTrending = async ({ searchParams }: MovieTrendingPageProps) => {
+const MovieTrending = async ({ searchParams }: Props) => {
+  const resolvedParams = await searchParams;
+
   const movies = await getMovies({
-    params: { page: searchParams.p || 1 },
+    params: { page: resolvedParams.p || 1 },
     endpoint: TMDB_ENDPOINTS.POPULAR_MOVIES,
   });
+
   if (!movies) return <NotFound type="FILMS" />;
+
   return (
     <div>
       <Section
