@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Suspense } from "react";
 import Logo from "../Logo/Logo";
 import Container from "../Container/Container";
 import SearchForm from "../SearchForm/SearchForm";
@@ -12,7 +12,9 @@ const Header = () => {
         <div className={styles.inner}>
           <Logo />
           <div className={styles.search}>
-            <SearchForm />
+            <Suspense fallback={<div>Загрузка...</div>}>
+              <SearchForm />
+            </Suspense>
           </div>
           <Navbar />
         </div>
