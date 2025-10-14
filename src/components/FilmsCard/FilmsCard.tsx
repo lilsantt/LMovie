@@ -36,7 +36,7 @@ const FilmsCard = ({ movieItem, type }: FilmsCardProps) => {
         </div>
       </Link>
       <div className={styles.bottom}>
-        <Rating rating={movieItem.vote_average} color="black" size="mini" />
+        <Rating rating={movieItem.vote_average} size="mini" />
         <Genres filmGenres={movieItem.genre_ids} type={type} count={1} />
       </div>
     </div>
