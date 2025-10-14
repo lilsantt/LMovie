@@ -3,7 +3,6 @@ import Container from "@/components/Container/Container";
 import { NotFound } from "@/components/NotFound/NotFound";
 import Pagination from "@/components/Pagination/Pagination";
 import SearchList from "@/components/SearchList/SearchList";
-import SearchListSkeleton from "@/components/SearchList/Skeleton/SearchListSkeleton";
 import Section from "@/components/Section/Section";
 import Sidebar from "@/components/Sidebar/Sidebar";
 import { SITE_NAME } from "@/constants/names";
@@ -76,7 +75,7 @@ const MovieSearchPage = async ({ searchParams }: MovieSearchPageProps) => {
             {films?.results ? (
               <SearchList items={films?.results} checkType />
             ) : (
-              <SearchListSkeleton />
+              <span>Ничего не найдено</span>
             )}
           </Section>
           <Section>
