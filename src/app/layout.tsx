@@ -15,7 +15,8 @@ const dmSans = DM_Sans({
 
 export const metadata: Metadata = {
   title: SITE_NAME,
-  description: "Лучший сервис о фильмах и сериалах",
+  description:
+    "Ищите сериалы быстро и удобно! Наш сервис использует TMDB API, чтобы предоставить актуальные данные о сериалах, трейлерах и описаниях.",
 };
 
 export default async function RootLayout({

@@ -1,7 +1,7 @@
 "use client";
 import { paths } from "@/constants/paths";
 import Link from "next/link";
-import React, { useState } from "react";
+import React, { Suspense, useState } from "react";
 import styles from "./Navbar.module.css";
 import clsx from "clsx";
 import { usePathname } from "next/navigation";
@@ -58,7 +58,9 @@ const Navbar = () => {
             </button>
           </div>
           <div className={styles.search}>
-            <SearchForm onSubmit={() => setIsOpen(false)} />
+            <Suspense fallback={<div>Загрузка...</div>}>
+              <SearchForm onSubmit={() => setIsOpen(false)} />
+            </Suspense>
           </div>
           <div>
             <span className={styles.menuTitle}>Меню</span>
