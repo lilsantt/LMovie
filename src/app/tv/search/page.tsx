@@ -8,23 +8,26 @@ import Sidebar from "@/components/Sidebar/Sidebar";
 import { SITE_NAME } from "@/constants/names";
 import React from "react";
 
-type TVSearchPageProps = {
-  searchParams: {
-    genres?: string;
-    year_gte?: string;
-    year_lte?: string;
-    rating_gte?: string;
-    rating_lte?: string;
-    p?: string;
-  };
+type SearchParams = {
+  genres?: string;
+  year_gte?: string;
+  year_lte?: string;
+  rating_gte?: string;
+  rating_lte?: string;
+  p?: string;
 };
 
-export async function generateMetadata(searchParams: TVSearchPageProps) {
+type Props = {
+  searchParams: Promise<SearchParams>;
+};
+
+export async function generateMetadata({ searchParams }: Props) {
+  const resolvedParams = await searchParams;
+
   const title = `Поиск сериалов — ${
-    searchParams.searchParams.p
-      ? "Страница   " + searchParams.searchParams.p || 1
-      : SITE_NAME
+    resolvedParams.p ? "Страница " + (resolvedParams.p || "1") : SITE_NAME
   } | ${SITE_NAME}`;
+
   const description = `Ищите сериалы быстро и удобно! Наш сервис использует TMDB API, чтобы предоставить актуальные данные о сериалах, трейлерах и описаниях.`;
 
   return {
@@ -33,7 +36,9 @@ export async function generateMetadata(searchParams: TVSearchPageProps) {
   };
 }
 
-const TVSearchPage = async ({ searchParams }: TVSearchPageProps) => {
+const TVSearchPage = async ({ searchParams }: Props) => {
+  const resolvedParams = await searchParams;
+
   const {
     genres,
     year_gte,
@@ -41,7 +46,8 @@ const TVSearchPage = async ({ searchParams }: TVSearchPageProps) => {
     rating_gte,
     rating_lte,
     p = "1",
-  } = searchParams;
+  } = resolvedParams;
+
   const page = Math.max(1, Math.min(Number(p), 500));
 
   const apiParams = {

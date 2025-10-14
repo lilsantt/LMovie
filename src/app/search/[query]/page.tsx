@@ -7,18 +7,24 @@ import Section from "@/components/Section/Section";
 import { SITE_NAME } from "@/constants/names";
 import React from "react";
 
-type GenresProps = {
-  searchParams: { s?: string; p?: string };
+type SearchParams = {
+  s?: string;
+  p?: string;
 };
 
-export async function generateMetadata(searchParams: GenresProps) {
-  const title = searchParams.searchParams.s
-    ? `Поиск: "${searchParams.searchParams.s?.replaceAll("+", " ")}"${
-        searchParams.searchParams.p
-          ? ` – Страница ${searchParams.searchParams.p}`
-          : ""
+type Props = {
+  searchParams: Promise<SearchParams>;
+};
+
+export async function generateMetadata({ searchParams }: Props) {
+  const resolvedParams = await searchParams;
+
+  const title = resolvedParams.s
+    ? `Поиск: "${resolvedParams.s?.replaceAll("+", " ")}"${
+        resolvedParams.p ? ` – Страница ${resolvedParams.p}` : ""
       } | ${SITE_NAME}`
     : `Поиск фильмов и сериалов | ${SITE_NAME}`;
+
   const description = `Ищите сериалы быстро и удобно! Наш сервис использует TMDB API, чтобы предоставить актуальные данные о сериалах, трейлерах и описаниях.`;
 
   return {
@@ -27,20 +33,24 @@ export async function generateMetadata(searchParams: GenresProps) {
   };
 }
 
-const GenresPage = async ({ searchParams }: GenresProps) => {
+const GenresPage = async ({ searchParams }: Props) => {
+  const resolvedParams = await searchParams;
+
   const films = await searchFilms({
     params: {
-      query: searchParams.s,
-      page: searchParams.p,
+      query: resolvedParams.s,
+      page: resolvedParams.p,
     },
   });
+
   if (!films) return <NotFound type="SEARCH" />;
+
   return (
     <div>
       <Container>
         <Section
-          title={`Поиск по "${searchParams.s?.replaceAll("+", " ")}"`}
-          subtitle={`Страница ${searchParams.p || 1} из ${films.total_pages}`}
+          title={`Поиск по "${resolvedParams.s?.replaceAll("+", " ")}"`}
+          subtitle={`Страница ${resolvedParams.p || 1} из ${films.total_pages}`}
         >
           {films?.results.length > 0 ? (
             <SearchList items={films?.results} />
@@ -52,7 +62,7 @@ const GenresPage = async ({ searchParams }: GenresProps) => {
           <Pagination
             currentPage={films.page}
             totalPages={films.total_pages}
-            getPageLink={(page) => `/search/1?p=${page}&s=${searchParams.s}`}
+            getPageLink={(page) => `/search/1?p=${page}&s=${resolvedParams.s}`}
           />
         </Section>
       </Container>

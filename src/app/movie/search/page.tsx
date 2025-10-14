@@ -8,23 +8,26 @@ import Sidebar from "@/components/Sidebar/Sidebar";
 import { SITE_NAME } from "@/constants/names";
 import React from "react";
 
-type MovieSearchPageProps = {
-  searchParams: {
-    genres?: string;
-    year_gte?: string;
-    year_lte?: string;
-    rating_gte?: string;
-    rating_lte?: string;
-    p?: string;
-  };
+type SearchParams = {
+  genres?: string;
+  year_gte?: string;
+  year_lte?: string;
+  rating_gte?: string;
+  rating_lte?: string;
+  p?: string;
 };
 
-export async function generateMetadata(searchParams: MovieSearchPageProps) {
+type Props = {
+  searchParams: Promise<SearchParams>;
+};
+
+export async function generateMetadata({ searchParams }: Props) {
+  const resolvedParams = await searchParams;
+
   const title = `Поиск фильмов — ${
-    searchParams.searchParams.p
-      ? "Страница   " + searchParams.searchParams.p || 1
-      : SITE_NAME
+    resolvedParams.p ? "Страница " + (resolvedParams.p || "1") : SITE_NAME
   } | ${SITE_NAME}`;
+
   const description = `Ищите сериалы быстро и удобно! Наш сервис использует TMDB API, чтобы предоставить актуальные данные о сериалах, трейлерах и описаниях.`;
 
   return {
@@ -33,7 +36,9 @@ export async function generateMetadata(searchParams: MovieSearchPageProps) {
   };
 }
 
-const MovieSearchPage = async ({ searchParams }: MovieSearchPageProps) => {
+const MovieSearchPage = async ({ searchParams }: Props) => {
+  const resolvedParams = await searchParams;
+
   const {
     genres,
     year_gte,
@@ -41,7 +46,7 @@ const MovieSearchPage = async ({ searchParams }: MovieSearchPageProps) => {
     rating_gte,
     rating_lte,
     p = "1",
-  } = searchParams;
+  } = resolvedParams;
 
   const page = Math.max(1, Math.min(Number(p), 500));
 
@@ -61,6 +66,7 @@ const MovieSearchPage = async ({ searchParams }: MovieSearchPageProps) => {
   const films = await discoverMovies({ params: apiParams });
 
   if (!films) return <NotFound type="SEARCH" />;
+
   return (
     <div>
       <Container>
@@ -69,8 +75,10 @@ const MovieSearchPage = async ({ searchParams }: MovieSearchPageProps) => {
         </div>
         <main>
           <Section
-            title={`Поиск фильмов`}
-            subtitle={`Страница ${searchParams.p || 1} из ${films.total_pages}`}
+            title="Поиск фильмов"
+            subtitle={`Страница ${resolvedParams.p || 1} из ${
+              films.total_pages
+            }`}
           >
             {films?.results ? (
               <SearchList items={films?.results} checkType />
