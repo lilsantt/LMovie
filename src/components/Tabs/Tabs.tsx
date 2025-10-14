@@ -17,7 +17,7 @@ const Tabs = ({ cast, crew }: TabsProps) => {
     new Set(crew.map((item) => item.department))
   );
 
-  const removeDuplicatesById = (items: any[]) => {
+  const removeDuplicatesById = (items: CombinedCreditsObj[]) => {
     const seen = new Map();
     for (const item of items) {
       if (!seen.has(item.id)) {

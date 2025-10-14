@@ -4,11 +4,7 @@ import styles from "./SearchForm.module.css";
 import { Search } from "lucide-react";
 import { useSearchParams } from "next/navigation";
 
-type SearchFormProps = {
-  searchParams: { s?: string };
-};
-
-const SearchForm = ({ searchParams }: SearchFormProps) => {
+const SearchForm = () => {
   const searchQuery = useSearchParams().get("s");
   return (
     <div>

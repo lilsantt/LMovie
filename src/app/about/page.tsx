@@ -4,9 +4,6 @@ import styles from "./page.module.css";
 import { Cpu, Database, Film } from "lucide-react";
 import { SITE_NAME } from "@/constants/names";
 import Container from "@/components/Container/Container";
-interface Props {
-  className?: string;
-}
 
 export async function generateMetadata() {
   const title = `О нас — ${SITE_NAME}`;
@@ -18,7 +15,7 @@ export async function generateMetadata() {
   };
 }
 
-export default function Page({ className }: Props) {
+export default function Page() {
   return (
     <main className={styles.container}>
       {/* Обложка */}

@@ -2,7 +2,7 @@
 
 import { FilterState } from "@/components/Filters/Filter/Filter";
 import { Slider } from "@mui/material";
-import styles from "./Range.module.css";
+// import styles from "./Range.module.css";
 
 type RangeProps = {
   min: number;
@@ -11,7 +11,7 @@ type RangeProps = {
   stepValue: number;
   value: [number, number];
   fieldName: keyof FilterState;
-  onChange: (field: keyof FilterState, value: any) => void;
+  onChange: (field: keyof FilterState, value: [number, number]) => void;
 };
 
 export default function Range({

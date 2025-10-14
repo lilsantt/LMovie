@@ -1,9 +1,7 @@
 import Link from "next/link";
 import React from "react";
 
-type Props = {};
-
-const SearchTypes = (props: Props) => {
+const SearchTypes = () => {
   return (
     <div>
       <Link href={"/movie/search"}>Поиск по фильма</Link>

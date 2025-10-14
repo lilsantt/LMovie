@@ -42,7 +42,7 @@ const PopularFilmsSlider = ({ films }: Props) => {
     return () => {
       if (intervalRef.current) clearInterval(intervalRef.current);
     };
-  }, []);
+  }, [nextSlide]);
 
   const handleTouchStart = (e: React.TouchEvent) => {
     touchStartX.current = e.touches[0].clientX;

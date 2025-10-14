@@ -3,9 +3,7 @@ import Link from "next/link";
 import React from "react";
 import Title from "../Title/Title";
 
-type Props = {};
-
-const Logo = (props: Props) => {
+const Logo = () => {
   return (
     <Link href={"/"}>
       <Title title={SITE_NAME} tag="h2" color="white" />

@@ -1,5 +1,4 @@
 import { NextResponse } from "next/server";
-import { getMovies } from "@/api/tmdb/getMovies";
 import { TMDB_ENDPOINTS } from "@/constants/apiRoutes";
 import { getMovieGenres } from "../getGenres";
 

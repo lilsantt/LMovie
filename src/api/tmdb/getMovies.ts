@@ -1,7 +1,6 @@
-import { Endpoint, MovieRusult, PopularMoviesResponse } from "@/types/tmdb";
+import { Endpoint, PopularMoviesResponse } from "@/types/tmdb";
 import { TMDB_BASE_URL } from "@/utils/axiosClient";
 import { handleAxiosError } from "@/utils/handleAxiosError";
-import axios from "axios";
 
 type GetMoviesOptions = {
   endpoint: Endpoint;

@@ -18,7 +18,7 @@ export default function TrailerModal({ videoKey, onClose }: TrailerModalProps) {
     document.addEventListener("keydown", handleKeyDown);
     document.body.style.overflow = "hidden";
     return () => document.removeEventListener("keydown", handleKeyDown);
-  }, []);
+  }, [onClose]);
 
   return (
     <div className={styles.backdrop} onClick={onClose}>

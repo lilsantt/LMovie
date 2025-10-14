@@ -6,7 +6,6 @@ import { TEXTS } from "@/constants/texts";
 type NotFoundType = "SEARCH" | "TV" | "FILMS" | "PERSON";
 
 interface Props {
-  className?: string;
   title?: string;
   description?: string;
   type: NotFoundType;
@@ -14,7 +13,6 @@ interface Props {
 }
 
 export const NotFound: React.FC<Props> = ({
-  className,
   type,
   children,
   title,

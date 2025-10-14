@@ -1,7 +1,6 @@
 "use client";
 import { useCallback, useEffect, useState } from "react";
 import Range from "@/components/ui/Range/Range";
-import { Genre } from "@/types/tmdb";
 import { useRouter, useSearchParams } from "next/navigation";
 import styles from "./Filters.module.css";
 
@@ -10,7 +9,7 @@ export type FilterState = {
   ratingRange: [number, number];
 };
 
-const Filter = ({ genres }: { genres: Genre[] }) => {
+const Filter = () => {
   const searchParams = useSearchParams();
   const router = useRouter();
   const [filters, setFilters] = useState<FilterState>(() => {

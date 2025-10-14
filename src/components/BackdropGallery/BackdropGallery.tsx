@@ -12,15 +12,12 @@ type BackdropGalleryProps = {
   backdrops: Backdrop[];
 };
 
-interface BackdropGalleryComponent extends React.FC<BackdropGalleryProps> {
-  Skeleton: () => React.ReactElement;
-}
-
 const IMAGE_BASE_URL = "https://image.tmdb.org/t/p/w780";
 
-const BackdropGallery: BackdropGalleryComponent = ({ backdrops }) => {
+const BackdropGallery: React.FC<BackdropGalleryProps> = ({ backdrops }) => {
   const [startIndex, setStartIndex] = useState<number | null>(null);
-  console.log(startIndex);
+  const isMobile = useMediaQuery("(max-width: 768px)");
+
   if (!backdrops || backdrops.length === 0) {
     return <p>Изображения не найдены.</p>;
   }
@@ -30,7 +27,6 @@ const BackdropGallery: BackdropGalleryComponent = ({ backdrops }) => {
     alt: "Backdrop",
   }));
 
-  const isMobile = useMediaQuery("(max-width: 768px)");
   const visibleCount = isMobile ? 4 : 10;
   const limitedBackdrops = backdrops.slice(0, visibleCount);
 
@@ -57,14 +53,6 @@ const BackdropGallery: BackdropGalleryComponent = ({ backdrops }) => {
   );
 };
 
-BackdropGallery.Skeleton = () => {
-  return (
-    <div className={styles.grid}>
-      {[...Array(10)].map((_, index) => (
-        <div key={index} className={styles.skeleton} />
-      ))}
-    </div>
-  );
-};
+BackdropGallery.displayName = "BackdropGallery";
 
 export default BackdropGallery;

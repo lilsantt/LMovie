@@ -1,8 +1,5 @@
-import { TMDB_ENDPOINTS } from "@/constants/apiRoutes";
-import { Genre, MovieDetails } from "@/types/tmdb";
+import { MovieDetails } from "@/types/tmdb";
 import { TMDB_BASE_URL } from "@/utils/axiosClient";
-import { handleAxiosError } from "@/utils/handleAxiosError";
-import axios from "axios";
 
 export async function getMovieDetails(
   id: string,

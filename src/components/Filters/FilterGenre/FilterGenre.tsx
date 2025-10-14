@@ -1,17 +1,12 @@
 "use client";
 import { Genre } from "@/types/tmdb";
 import Link from "next/link";
-import React, { useState } from "react";
 
 type FilterGenreProps = {
   genres: Genre[];
 };
 
 const FilterGenre = ({ genres }: FilterGenreProps) => {
-  const [activeGenres, setActiveGenres] = useState<
-    { id: number; name: string }[]
-  >([]);
-
   return (
     <ul>
       {genres.map((genre) => {

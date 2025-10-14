@@ -1,8 +1,6 @@
-// utils/createPageLink.ts
-
 export function createPageLink(
   basePath: string,
-  searchParams: Record<string, any>,
+  searchParams: Record<string, string | number | boolean | null | undefined>,
   page: number
 ) {
   const safeParams: Record<string, string> = {};
@@ -17,7 +15,7 @@ export function createPageLink(
     }
   });
 
-  safeParams.p = String(page); // обновляем номер страницы
+  safeParams.p = String(page);
 
   const newParams = new URLSearchParams(safeParams);
 

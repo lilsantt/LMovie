@@ -1,22 +1,14 @@
 import { TMDB_ENDPOINTS } from "@/constants/apiRoutes";
-import {
-  Endpoint,
-  Genre,
-  MovieDetails,
-  MovieRusult,
-  MultiSearchResponse,
-} from "@/types/tmdb";
+import { MultiSearchResponse } from "@/types/tmdb";
 import { TMDB_BASE_URL } from "@/utils/axiosClient";
 import { handleAxiosError } from "@/utils/handleAxiosError";
 import axios from "axios";
 
 type SearchOptions = {
-  count?: number;
   params?: Record<string, string | number | boolean | undefined>;
 };
 
 export async function searchFilms({
-  count,
   params,
 }: SearchOptions): Promise<MultiSearchResponse | null> {
   try {

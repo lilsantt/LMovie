@@ -1,5 +1,5 @@
 import { TMDB_ENDPOINTS } from "@/constants/apiRoutes";
-import { MovieWithTrailer, PopularMoviesResponse, Video } from "@/types/tmdb";
+import { MovieWithTrailer, Video } from "@/types/tmdb";
 import { TMDB_BASE_URL } from "@/utils/axiosClient";
 import { handleAxiosError } from "@/utils/handleAxiosError";
 import axios from "axios";
@@ -11,7 +11,7 @@ export async function getUpcomingMoviesWithTrailers(
   const today = new Date().toISOString().split("T")[0];
 
   let page = 1;
-  const maxPages = 5; // максимум 5 страниц подгружаем, чтобы не улететь в вечность
+  const maxPages = 5;
 
   try {
     while (collected.length < limit && page <= maxPages) {

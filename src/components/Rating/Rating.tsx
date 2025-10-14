@@ -5,11 +5,10 @@ import clsx from "clsx";
 
 type RatingProps = {
   rating: number;
-  color?: "black" | "white";
   size?: "mini" | "std";
 };
 
-const Rating = ({ rating, color = "white", size = "std" }: RatingProps) => {
+const Rating = ({ rating, size = "std" }: RatingProps) => {
   return (
     <div
       className={clsx(styles.rating, size === "mini" ? styles["mini"] : null)}

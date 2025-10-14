@@ -4,9 +4,8 @@ import styles from "./Footer.module.css";
 import { footerPaths } from "@/constants/paths";
 import Link from "next/link";
 import Logo from "../Logo/Logo";
-type Props = {};
 
-const Footer = (props: Props) => {
+const Footer = () => {
   return (
     <footer className={styles.footer}>
       <Container>

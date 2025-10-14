@@ -9,9 +9,7 @@ import SearchForm from "../SearchForm/SearchForm";
 import Logo from "../Logo/Logo";
 import Container from "../Container/Container";
 
-type Props = {};
-
-const Navbar = (props: Props) => {
+const Navbar = () => {
   const [isMenuOpen, setIsOpen] = useState(false);
   const currentPath = usePathname();
   const isActive = (url: string) => {

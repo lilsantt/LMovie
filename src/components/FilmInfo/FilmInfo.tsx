@@ -1,4 +1,4 @@
-import { DetailedGenres, MovieDetails } from "@/types/tmdb";
+import { MovieDetails } from "@/types/tmdb";
 import React from "react";
 import Rating from "../Rating/Rating";
 import TMDBImage from "../TMDBImage/TMDBImage";

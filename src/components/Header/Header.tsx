@@ -5,9 +5,7 @@ import SearchForm from "../SearchForm/SearchForm";
 import Navbar from "../Navbar/Navbar";
 import styles from "./Header.module.css";
 
-type Props = {};
-
-const Header = (props: Props) => {
+const Header = () => {
   return (
     <header className={styles.header}>
       <Container>

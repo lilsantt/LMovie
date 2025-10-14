@@ -2,7 +2,6 @@ import { TMDB_ENDPOINTS } from "@/constants/apiRoutes";
 import { PopularMoviesResponse } from "@/types/tmdb";
 import { TMDB_BASE_URL } from "@/utils/axiosClient";
 import { handleAxiosError } from "@/utils/handleAxiosError";
-import axios from "axios";
 
 type SearchOptions = {
   count?: number;
