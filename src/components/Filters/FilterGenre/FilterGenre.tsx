@@ -11,7 +11,7 @@ const FilterGenre = ({ genres }: FilterGenreProps) => {
     <ul>
       {genres.map((genre) => {
         return (
-          <li>
+          <li key={genre.id}>
             <Link href={`./genres/${genre.id}`}>{genre.name}</Link>
           </li>
         );
