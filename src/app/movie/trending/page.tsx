@@ -4,6 +4,7 @@ import Pagination from "@/components/Pagination/Pagination";
 import SearchList from "@/components/SearchList/SearchList";
 import Section from "@/components/Section/Section";
 import { TMDB_ENDPOINTS } from "@/constants/apiRoutes";
+import { maxPageCount } from "@/constants/constants";
 import { SITE_NAME } from "@/constants/names";
 import React from "react";
 
@@ -38,7 +39,7 @@ const MovieTrending = async ({ searchParams }: Props) => {
     <div>
       <Section
         title="Популярные фильмы"
-        subtitle={`Страница ${movies.page || 1} из ${movies.total_pages || 1}`}
+        subtitle={`Страница ${movies.page || 1} из ${maxPageCount}`}
       >
         <SearchList items={movies.results} checkType />
       </Section>

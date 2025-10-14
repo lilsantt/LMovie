@@ -4,7 +4,7 @@
 
 .hero {
   position: relative;
-  height: 300px;
+  height: 500px;
   overflow: hidden;
 }
 
@@ -62,4 +62,16 @@
 
 .contacts a:hover {
   text-decoration: underline;
+}
+
+@media (max-width: 480px) {
+  .heroContent {
+    width: 100%;
+  }
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+  }
 }

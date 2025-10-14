@@ -1,13 +1,25 @@
 .accordion {
   border-bottom: 1px solid #ccc;
-  padding: 12px 0;
 }
 
 .title {
   cursor: pointer;
   font-size: 18px;
-  font-weight: 600;
+  font-weight: 500;
   margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+}
+
+.icon {
+  width: 18px;
+  height: 18px;
+  margin-left: 6px;
+  transition: 0.3s;
+}
+
+.icon.open {
+  transform: rotate(180deg);
 }
 
 .list {

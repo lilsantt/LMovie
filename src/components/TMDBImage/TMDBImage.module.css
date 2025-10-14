@@ -16,6 +16,10 @@
   object-fit: cover;
 }
 
+.placeholder {
+  object-fit: cover;
+}
+
 .mini {
   width: 250px;
   height: 370px;
@@ -92,7 +96,6 @@
     height: auto;
   }
   .p_mini {
-    height: auto;
     width: 100%;
     object-fit: cover;
   }

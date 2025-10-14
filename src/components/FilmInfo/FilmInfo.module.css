@@ -136,8 +136,12 @@
     height: 100%;
     object-fit: cover;
   }
+
   .main {
     padding: 70px;
+  }
+  .box {
+    margin-top: 30px;
   }
 }
 
@@ -164,6 +168,7 @@
     row-gap: 10px;
   }
   .box {
+    margin-top: 18px;
     row-gap: 10px;
   }
   .main {

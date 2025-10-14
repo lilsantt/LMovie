@@ -37,7 +37,6 @@ export async function getMovies({
     );
 
     const data = await res.json();
-    console.log(data);
     const results = data?.results?.length ? data.results.slice(0, count) : [];
     return { ...data, results };
   } catch (error) {

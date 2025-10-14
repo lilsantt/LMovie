@@ -1,5 +1,4 @@
 import React from "react";
-import Container from "../Container/Container";
 import Section from "../Section/Section";
 import { TEXTS } from "@/constants/texts";
 
@@ -24,11 +23,11 @@ export const NotFound: React.FC<Props> = ({
     description || (type ? TEXTS[type].NOT_FOUND.DESCRIPTION : "");
 
   return (
-    <Container>
+    <div style={{ paddingTop: "16px" }}>
       <Section title={finalTitle}>
         <span>{finalDescription}</span>
         {children}
       </Section>
-    </Container>
+    </div>
   );
 };

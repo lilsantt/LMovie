@@ -64,9 +64,7 @@ export async function getUpcomingMoviesWithTrailers(
               trailer,
             });
           }
-        } catch {
-          // skip if trailer fetch fails
-        }
+        } catch {}
       }
 
       page++;

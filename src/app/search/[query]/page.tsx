@@ -1,5 +1,4 @@
 import { searchFilms } from "@/api/tmdb/searchFilms";
-import Container from "@/components/Container/Container";
 import { NotFound } from "@/components/NotFound/NotFound";
 import Pagination from "@/components/Pagination/Pagination";
 import SearchList from "@/components/SearchList/SearchList";
@@ -39,17 +38,18 @@ const GenresPage = async ({ searchParams }: Props) => {
   const films = await searchFilms({
     params: {
       query: resolvedParams.s,
-      page: resolvedParams.p,
+      page: resolvedParams.p || 1,
     },
   });
-
   if (!films) return <NotFound type="SEARCH" />;
 
   return (
     <div>
-      <Container>
+      <div style={{ paddingTop: "16px" }}>
         <Section
-          title={`Поиск по "${resolvedParams.s?.replaceAll("+", " ")}"`}
+          title={`Поиск по "${resolvedParams.s
+            ?.replaceAll("+", " ")
+            .slice(0, 20)}"`}
           subtitle={`Страница ${resolvedParams.p || 1} из ${films.total_pages}`}
         >
           {films?.results.length > 0 ? (
@@ -58,14 +58,14 @@ const GenresPage = async ({ searchParams }: Props) => {
             <span>Ничего не найдено</span>
           )}
         </Section>
-        <Section>
-          <Pagination
-            currentPage={films.page}
-            totalPages={films.total_pages}
-            getPageLink={(page) => `/search/1?p=${page}&s=${resolvedParams.s}`}
-          />
-        </Section>
-      </Container>
+      </div>
+      <Section>
+        <Pagination
+          currentPage={films.page}
+          totalPages={films.total_pages}
+          getPageLink={(page) => `/search/1?p=${page}&s=${resolvedParams.s}`}
+        />
+      </Section>
     </div>
   );
 };

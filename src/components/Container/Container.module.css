@@ -7,24 +7,28 @@
 @media (max-width: 1600px) {
   .container {
     max-width: 1140px;
+    width: 100%;
   }
 }
 
 @media (max-width: 1280px) {
   .container {
     max-width: 1010px;
+    width: 100%;
   }
 }
 
 @media (max-width: 1024px) {
   .container {
     max-width: 830px;
+    width: 100%;
   }
 }
 
 @media (max-width: 768px) {
   .container {
     max-width: 640px;
+    width: 100%;
   }
 }
 

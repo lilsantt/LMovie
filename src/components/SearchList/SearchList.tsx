@@ -43,7 +43,7 @@ const SearchList = ({
           else if (item.media_type === "person")
             return (
               <li key={item.id}>
-                <PersonCard person={item as PersonDetails} />
+                <PersonCard titleLength={15} person={item as PersonDetails} />
               </li>
             );
         })}

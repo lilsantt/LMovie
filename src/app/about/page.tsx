@@ -55,7 +55,7 @@ export default function Page() {
           </p>
 
           <p>
-            Все данные для сайта получены через{" "}
+            Все данные для сайта получены через
             <strong>The Movie Database API</strong>. Это гарантирует
             актуальность информации, наличие качественных изображений, постеров
             и трейлеров. Также это позволяет легко масштабировать проект,
@@ -96,27 +96,6 @@ export default function Page() {
           </div>
         </section>
       </Container>
-
-      {/* Контакты */}
-      <section className={styles.contacts}>
-        <h2>Контакты</h2>
-        <p>
-          Email:{" "}
-          <a href="mailto:youremail@example.com">youremail@example.com</a>
-        </p>
-        <p>
-          GitHub:{" "}
-          <a href="https://github.com/yourusername" target="_blank">
-            github.com/yourusername
-          </a>
-        </p>
-        <p>
-          LinkedIn:{" "}
-          <a href="https://linkedin.com/in/yourusername" target="_blank">
-            linkedin.com/in/yourusername
-          </a>
-        </p>
-      </section>
     </main>
   );
 }

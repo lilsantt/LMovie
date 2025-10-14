@@ -12,19 +12,25 @@ export async function searchFilms({
   params,
 }: SearchOptions): Promise<MultiSearchResponse | null> {
   try {
+    const requestParams = {
+      language: "ru-RU",
+      ...params,
+    };
+
     const res = await axios.get(
       `${TMDB_BASE_URL}/${TMDB_ENDPOINTS.SEARCH.endpoint}`,
       {
-        params: {
-          language: "ru-RU",
-          ...params,
+        params: requestParams,
+        paramsSerializer: {
+          encode: (value) => encodeURIComponent(value),
         },
         headers: {
           Authorization: `Bearer ${process.env.TMDB_API_TOKEN}`,
-          Accept: "accept: application/json",
+          Accept: "application/json",
         },
       }
     );
+
     return res.data;
   } catch (error) {
     handleAxiosError(error, TMDB_ENDPOINTS.SEARCH.context);

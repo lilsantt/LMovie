@@ -5,7 +5,10 @@
   width: 100%;
   z-index: 3;
 }
-
+.search {
+  margin-left: 30px;
+  margin-right: auto;
+}
 .inner {
   display: flex;
   align-items: center;
@@ -19,4 +22,7 @@
 }
 
 @media (max-width: 1600px) {
+  .header {
+    padding: 6px 0;
+  }
 }

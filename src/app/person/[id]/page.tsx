@@ -6,7 +6,7 @@ import Section from "@/components/Section/Section";
 import Tabs from "@/components/Tabs/Tabs";
 import { getCachedPersonDetails } from "@/utils/getCachedQueries";
 import { Metadata } from "next";
-import React, { Suspense } from "react";
+import React from "react";
 
 type PersonProps = {
   params: Promise<{ id: string }>;
@@ -46,19 +46,11 @@ const PersonPage = async ({ params }: PersonProps) => {
         <Section>
           <PersonInfo personDetails={personDetails} />
         </Section>
-        <Section title="Изображения">
-          <Suspense
-            fallback={
-              <div
-                style={{ textAlign: "center", color: "red", fontSize: "40px" }}
-              >
-                Загрузка...
-              </div>
-            }
-          >
+        {personDetails.images.profiles.length > 0 && (
+          <Section title="Изображения">
             <BackdropGallery backdrops={personDetails.images.profiles} />
-          </Suspense>
-        </Section>
+          </Section>
+        )}
         {personDetails.combined_credits?.cast.length > 0 ||
         personDetails.combined_credits?.crew.length > 0 ? (
           <Section title={`Работы с участием ${personDetails?.name}`}>

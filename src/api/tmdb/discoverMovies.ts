@@ -15,6 +15,8 @@ export async function discoverMovies({
   try {
     const query = new URLSearchParams({
       language: "ru-RU",
+      include_adult: "false",
+      include_video: "false",
       ...Object.fromEntries(
         Object.entries(params || {}).map(([k, v]) => [k, String(v)])
       ),

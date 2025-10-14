@@ -1,21 +1,41 @@
 "use client";
-import React from "react";
+import React, { useState, FormEvent } from "react";
 import styles from "./SearchForm.module.css";
 import { Search } from "lucide-react";
-import { useSearchParams } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 
-const SearchForm = () => {
-  const searchQuery = useSearchParams().get("s");
+interface SearchFormProps {
+  onSubmit?: () => void;
+}
+
+const SearchForm: React.FC<SearchFormProps> = ({ onSubmit }) => {
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const [query, setQuery] = useState(searchParams.get("s") || "");
+
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    if (query.trim()) {
+      onSubmit?.();
+      router.push(`/search/1?s=${encodeURIComponent(query)}`);
+    }
+  };
+
   return (
-    <div>
-      <form action="/search/1" method="GET" className={styles.form}>
+    <div className={styles.searchForm}>
+      <form onSubmit={handleSubmit} className={styles.form}>
         <input
           name="s"
           placeholder="Поиск..."
           className={styles.search}
-          defaultValue={searchQuery ? searchQuery : ""}
+          value={query}
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+            setQuery(e.target.value)
+          }
         />
-        <Search className={styles.icon} />
+        <button type="submit" className={styles.submitButton}>
+          <Search className={styles.icon} />
+        </button>
       </form>
     </div>
   );

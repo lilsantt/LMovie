@@ -74,6 +74,7 @@
   align-items: center;
   width: 100%;
   margin-bottom: 16px;
+  padding: 6px 0;
 }
 
 .active {
@@ -108,16 +109,26 @@
 
   .link {
     color: var(--white);
-    font-size: 18px;
+    font-size: 16px;
+    font-weight: 400;
   }
 
   .active .link {
     color: var(--active);
   }
 
+  .menuTitle {
+    display: block;
+    color: var(--white);
+    font-size: 24px;
+    font-weight: 400;
+    margin-bottom: 16px;
+  }
+
   .icon {
     width: 18px;
     height: 18px;
+    font-weight: 400;
     color: var(--white);
   }
 }

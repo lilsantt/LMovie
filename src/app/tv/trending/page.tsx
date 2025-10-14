@@ -3,6 +3,7 @@ import Pagination from "@/components/Pagination/Pagination";
 import SearchList from "@/components/SearchList/SearchList";
 import Section from "@/components/Section/Section";
 import { TMDB_ENDPOINTS } from "@/constants/apiRoutes";
+import { maxPageCount } from "@/constants/constants";
 import { SITE_NAME } from "@/constants/names";
 import React from "react";
 
@@ -37,7 +38,7 @@ const TVTrendingPage = async ({ searchParams }: Props) => {
     <div>
       <Section
         title="Популярные сериалы"
-        subtitle={`Страница ${movies.page} из ${movies.total_pages}`}
+        subtitle={`Страница ${movies.page} из ${maxPageCount}`}
       >
         <SearchList items={movies.results} checkType type="tv" />
       </Section>

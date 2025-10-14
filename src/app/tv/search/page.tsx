@@ -5,6 +5,7 @@ import Pagination from "@/components/Pagination/Pagination";
 import SearchList from "@/components/SearchList/SearchList";
 import Section from "@/components/Section/Section";
 import Sidebar from "@/components/Sidebar/Sidebar";
+import { maxPageCount } from "@/constants/constants";
 import { SITE_NAME } from "@/constants/names";
 import React from "react";
 
@@ -53,7 +54,7 @@ const TVSearchPage = async ({ searchParams }: Props) => {
   const apiParams = {
     page,
     sort_by: "popularity.desc",
-    include_adult: true,
+    include_adult: false,
     include_video: false,
     language: "ru-RU",
     ...(genres && { with_genres: genres }),
@@ -67,7 +68,7 @@ const TVSearchPage = async ({ searchParams }: Props) => {
   if (!films) return <NotFound type="TV" />;
 
   return (
-    <div className="flex">
+    <div>
       <Container>
         <aside>
           <Sidebar />
@@ -75,7 +76,7 @@ const TVSearchPage = async ({ searchParams }: Props) => {
         <main className="flex-1 flex">
           <Section
             title="Поиск сериалов"
-            subtitle={`Страница ${page || 1} из ${films.total_pages}`}
+            subtitle={`Страница ${page || 1} из ${maxPageCount}`}
           >
             <SearchList items={films.results} type="tv" checkType />
           </Section>

@@ -26,6 +26,9 @@
   opacity: 0.8;
 }
 
+.title {
+  min-width: 268px;
+}
 .range .MuiSlider-valueLabel {
   background: #e50914;
   color: white;

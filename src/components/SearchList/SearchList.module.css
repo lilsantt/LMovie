@@ -1,6 +1,7 @@
 .list {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
+  justify-items: center;
   gap: 24px;
   list-style: none;
   padding: 0;

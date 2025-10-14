@@ -21,7 +21,7 @@ export default function TMDBImage({
       <img
         src={fallbackSrc}
         alt="Не найдено"
-        className={clsx(styles[className])}
+        className={clsx(styles[className], styles.placeholder)}
       />
     );
   }

@@ -58,23 +58,30 @@ const Navbar = () => {
             </button>
           </div>
           <div className={styles.search}>
-            <SearchForm />
+            <SearchForm onSubmit={() => setIsOpen(false)} />
           </div>
-          <ul className={styles.menu}>
-            {paths.map((path) => {
-              return (
-                <li
-                  className={clsx(styles.item, isActive(path.path))}
-                  key={path.id}
-                >
-                  <Link href={path.path} className={styles.link}>
-                    {path.name}
-                    <path.icon className={styles.icon} />
-                  </Link>
-                </li>
-              );
-            })}
-          </ul>
+          <div>
+            <span className={styles.menuTitle}>Меню</span>
+            <ul className={styles.menu}>
+              {paths.map((path) => {
+                return (
+                  <li
+                    className={clsx(styles.item, isActive(path.path))}
+                    key={path.id}
+                  >
+                    <Link
+                      href={path.path}
+                      className={styles.link}
+                      onClick={() => setIsOpen(false)}
+                    >
+                      {path.name}
+                      <path.icon className={styles.icon} />
+                    </Link>
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
         </Container>
       </div>
     </nav>

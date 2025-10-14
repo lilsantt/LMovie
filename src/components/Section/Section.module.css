@@ -20,6 +20,20 @@
   margin-bottom: 50px;
 }
 
+@media (max-width: 1280px) {
+  .section {
+    margin: 36px 0;
+  }
+  .link {
+    font-size: 16px;
+    font-weight: 600;
+    column-gap: 10px;
+  }
+  .icon {
+    width: 20px;
+  }
+}
+
 @media (max-width: 768px) {
   .section {
     margin: 36px 0;
@@ -31,5 +45,9 @@
   }
   .icon {
     width: 18px;
+  }
+  .header {
+    flex-wrap: wrap;
+    row-gap: 6px;
   }
 }

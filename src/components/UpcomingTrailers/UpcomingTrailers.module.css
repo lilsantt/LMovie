@@ -27,9 +27,24 @@
 }
 
 @media (max-width: 768px) {
-  .list {
+  .item {
+    flex: 0 0 280px;
+  }
+  /* .list {
     display: flex;
     flex-wrap: wrap;
+  } */
+}
+
+@media (max-width: 598px) {
+  .item {
+    flex: 0 0 220px;
+  }
+}
+
+@media (max-width: 480px) {
+  .item {
+    flex: 0 0 100%;
   }
 }
 

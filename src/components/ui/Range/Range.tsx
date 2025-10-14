@@ -2,7 +2,7 @@
 
 import { FilterState } from "@/components/Filters/Filter/Filter";
 import { Slider } from "@mui/material";
-// import styles from "./Range.module.css";
+import styles from "./Range.module.css";
 
 type RangeProps = {
   min: number;
@@ -25,7 +25,7 @@ export default function Range({
 }: RangeProps) {
   return (
     <div>
-      <p>
+      <p className={styles.title}>
         {name}: {value[0]} - {value[1]}
       </p>
       <Slider

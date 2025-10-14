@@ -5,6 +5,7 @@ import Pagination from "@/components/Pagination/Pagination";
 import SearchList from "@/components/SearchList/SearchList";
 import Section from "@/components/Section/Section";
 import Sidebar from "@/components/Sidebar/Sidebar";
+import { maxPageCount } from "@/constants/constants";
 import { SITE_NAME } from "@/constants/names";
 import React from "react";
 
@@ -53,7 +54,7 @@ const MovieSearchPage = async ({ searchParams }: Props) => {
   const apiParams = {
     page,
     sort_by: "popularity.desc",
-    include_adult: true,
+    include_adult: false,
     include_video: false,
     language: "ru-RU",
     ...(genres && { with_genres: genres }),
@@ -76,9 +77,7 @@ const MovieSearchPage = async ({ searchParams }: Props) => {
         <main>
           <Section
             title="Поиск фильмов"
-            subtitle={`Страница ${resolvedParams.p || 1} из ${
-              films.total_pages
-            }`}
+            subtitle={`Страница ${resolvedParams.p || 1} из ${maxPageCount}`}
           >
             {films?.results ? (
               <SearchList items={films?.results} checkType />

@@ -6,9 +6,10 @@ import TMDBImage from "../TMDBImage/TMDBImage";
 import { PersonDetails } from "@/types/tmdb";
 type PersonCardProps = {
   person: PersonDetails;
+  titleLength?: number;
 };
 
-const PersonCard = ({ person }: PersonCardProps) => {
+const PersonCard = ({ person, titleLength }: PersonCardProps) => {
   return (
     <div>
       <div className={styles.image}>
@@ -22,7 +23,16 @@ const PersonCard = ({ person }: PersonCardProps) => {
       </div>
       <div className=""></div>
       <Link href={`/person/${person.id}`} className={styles.title}>
-        <Title title={person.name || "Не указано"} tag="h3" />
+        <div className={styles.title_wrapper}>
+          <Title
+            title={
+              titleLength
+                ? person.name.slice(0, titleLength) + "..."
+                : person.name || "Не указано"
+            }
+            tag="h3"
+          />
+        </div>
       </Link>
       <span className={styles.role}>{person.known_for_department}</span>
     </div>
