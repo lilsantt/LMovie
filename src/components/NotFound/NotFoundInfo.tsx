@@ -11,7 +11,7 @@ interface Props {
   children?: React.ReactNode;
 }
 
-export const NotFound: React.FC<Props> = ({
+export const NotFoundInfo: React.FC<Props> = ({
   type,
   children,
   title,

@@ -1,5 +1,5 @@
 import { searchFilms } from "@/api/tmdb/searchFilms";
-import { NotFound } from "@/components/NotFound/NotFound";
+import { NotFoundInfo } from "@/components/NotFound/NotFoundInfo";
 import Pagination from "@/components/Pagination/Pagination";
 import SearchList from "@/components/SearchList/SearchList";
 import Section from "@/components/Section/Section";
@@ -41,7 +41,7 @@ const GenresPage = async ({ searchParams }: Props) => {
       page: resolvedParams.p || 1,
     },
   });
-  if (!films) return <NotFound type="SEARCH" />;
+  if (!films) return <NotFoundInfo type="SEARCH" />;
 
   return (
     <div>

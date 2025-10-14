@@ -1,6 +1,6 @@
 import { discoverMovies } from "@/api/tmdb/discoverMovies";
 import Container from "@/components/Container/Container";
-import { NotFound } from "@/components/NotFound/NotFound";
+import { NotFoundInfo } from "@/components/NotFound/NotFoundInfo";
 import Pagination from "@/components/Pagination/Pagination";
 import SearchList from "@/components/SearchList/SearchList";
 import Section from "@/components/Section/Section";
@@ -66,7 +66,7 @@ const MovieSearchPage = async ({ searchParams }: Props) => {
 
   const films = await discoverMovies({ params: apiParams });
 
-  if (!films) return <NotFound type="SEARCH" />;
+  if (!films) return <NotFoundInfo type="SEARCH" />;
 
   return (
     <div>

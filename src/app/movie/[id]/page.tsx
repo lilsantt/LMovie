@@ -3,7 +3,7 @@ import CastList from "@/components/CastList/CastList";
 import Container from "@/components/Container/Container";
 import FilmInfo from "@/components/FilmInfo/FilmInfo";
 import Films from "@/components/Films/FilmsList";
-import { NotFound } from "@/components/NotFound/NotFound";
+import { NotFoundInfo } from "@/components/NotFound/NotFoundInfo";
 import Section from "@/components/Section/Section";
 import TrailerPlayer from "@/components/TrailerPlayer/TrailerPlayer";
 import { SITE_NAME } from "@/constants/names";
@@ -42,7 +42,7 @@ const MovieDetailsPage = async ({ params }: MovieDetailsPageProps) => {
   const { id } = await params;
   const movieDetails = await getCachedMovieDetails(id, "movie");
   if (!movieDetails) {
-    return <NotFound type="FILMS" />;
+    return <NotFoundInfo type="FILMS" />;
   }
 
   return (

@@ -1,6 +1,6 @@
 import { discoverTVs } from "@/api/tmdb/discoverTV";
 import Container from "@/components/Container/Container";
-import { NotFound } from "@/components/NotFound/NotFound";
+import { NotFoundInfo } from "@/components/NotFound/NotFoundInfo";
 import Pagination from "@/components/Pagination/Pagination";
 import SearchList from "@/components/SearchList/SearchList";
 import Section from "@/components/Section/Section";
@@ -65,7 +65,7 @@ const TVSearchPage = async ({ searchParams }: Props) => {
   };
 
   const films = await discoverTVs({ params: apiParams });
-  if (!films) return <NotFound type="TV" />;
+  if (!films) return <NotFoundInfo type="TV" />;
 
   return (
     <div>

@@ -1,6 +1,6 @@
 import BackdropGallery from "@/components/BackdropGallery/BackdropGallery";
 import Container from "@/components/Container/Container";
-import { NotFound } from "@/components/NotFound/NotFound";
+import { NotFoundInfo } from "@/components/NotFound/NotFoundInfo";
 import PersonInfo from "@/components/PersonInfo/PersonInfo";
 import Section from "@/components/Section/Section";
 import Tabs from "@/components/Tabs/Tabs";
@@ -38,7 +38,7 @@ export async function generateMetadata({
 const PersonPage = async ({ params }: PersonProps) => {
   const { id } = await params;
   const personDetails = await getCachedPersonDetails(id);
-  if (!personDetails) return <NotFound type="PERSON" />;
+  if (!personDetails) return <NotFoundInfo type="PERSON" />;
 
   return (
     <div>

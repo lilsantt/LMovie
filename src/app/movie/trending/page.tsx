@@ -1,5 +1,5 @@
 import { getMovies } from "@/api/tmdb/getMovies";
-import { NotFound } from "@/components/NotFound/NotFound";
+import { NotFoundInfo } from "@/components/NotFound/NotFoundInfo";
 import Pagination from "@/components/Pagination/Pagination";
 import SearchList from "@/components/SearchList/SearchList";
 import Section from "@/components/Section/Section";
@@ -33,7 +33,7 @@ const MovieTrending = async ({ searchParams }: Props) => {
     endpoint: TMDB_ENDPOINTS.POPULAR_MOVIES,
   });
 
-  if (!movies) return <NotFound type="FILMS" />;
+  if (!movies) return <NotFoundInfo type="FILMS" />;
 
   return (
     <div>

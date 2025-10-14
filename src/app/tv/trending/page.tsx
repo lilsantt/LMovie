@@ -1,4 +1,5 @@
 import { getMovies } from "@/api/tmdb/getMovies";
+import { NotFoundInfo } from "@/components/NotFound/NotFoundInfo";
 import Pagination from "@/components/Pagination/Pagination";
 import SearchList from "@/components/SearchList/SearchList";
 import Section from "@/components/Section/Section";
@@ -32,7 +33,7 @@ const TVTrendingPage = async ({ searchParams }: Props) => {
     endpoint: TMDB_ENDPOINTS.TRENDING_TV_SHOWS,
   });
 
-  if (!movies) return;
+  if (!movies) return <NotFoundInfo type="TV" />;
 
   return (
     <div>
