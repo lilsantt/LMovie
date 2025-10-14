@@ -1,3 +1,6 @@
+import clsx from "clsx";
+import styles from "./TMDBImage.module.css";
+
 type TMDBImageProps = {
   path: string | null;
   alt?: string;
@@ -5,10 +8,6 @@ type TMDBImageProps = {
   className?: string;
   fallbackSrc?: string;
 };
-
-import clsx from "clsx";
-import styles from "./TMDBImage.module.css";
-
 export default function TMDBImage({
   path,
   alt = "",
@@ -26,7 +25,7 @@ export default function TMDBImage({
     );
   }
 
-  const src = `https://image.tmdb.org/t/p/${size}${path}`;
+  const src = `/api/tmdb/images?path=${encodeURIComponent(path)}&size=${size}`;
 
   return <img src={src} alt={alt} className={clsx(styles[className])} />;
 }
