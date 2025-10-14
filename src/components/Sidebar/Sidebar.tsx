@@ -10,7 +10,7 @@ const Sidebar = async () => {
   return (
     <div className={styles.sidebar}>
       <Accordion name="Фильтры">
-        <Filter genres={genres} />
+        <Filter />
       </Accordion>
     </div>
   );
