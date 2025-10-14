@@ -9,15 +9,14 @@ import { Metadata } from "next";
 import React, { Suspense } from "react";
 
 type PersonProps = {
-  params: {
-    id: string;
-  };
+  params: Promise<{ id: string }>;
 };
 
 export async function generateMetadata({
   params,
 }: PersonProps): Promise<Metadata> {
-  const personDetails = await getCachedPersonDetails(params.id);
+  const { id } = await params;
+  const personDetails = await getCachedPersonDetails(id);
   if (!personDetails) {
     return {
       title: "Персона не найдена",
@@ -37,7 +36,7 @@ export async function generateMetadata({
 }
 
 const PersonPage = async ({ params }: PersonProps) => {
-  const { id } = params;
+  const { id } = await params;
   const personDetails = await getCachedPersonDetails(id);
   if (!personDetails) return <NotFound type="PERSON" />;
 
