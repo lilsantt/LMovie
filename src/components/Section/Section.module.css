@@ -51,3 +51,9 @@
     row-gap: 6px;
   }
 }
+
+@media (max-width: 480px) {
+  .linkTitle {
+    display: none;
+  }
+}

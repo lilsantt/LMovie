@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import styles from "./LightboxSlider.module.css";
-
+import { ChevronLeft, ChevronRight, X } from "lucide-react";
 type LightboxSliderProps = {
   images: { src: string; alt?: string }[];
   startIndex: number;
@@ -38,16 +38,16 @@ const LightboxSlider = ({
       <div className={styles.content} onClick={(e) => e.stopPropagation()}>
         <img
           src={images[currentIndex].src}
-          alt={images[currentIndex].alt || ""}
+          alt={images[currentIndex].alt || "изображение"}
         />
         <button className={styles.closeBtn} onClick={onClose}>
-          ×
+          <X className={styles.icon} />
         </button>
         <button className={styles.prevBtn} onClick={prev}>
-          ‹
+          <ChevronLeft className={styles.icon} />
         </button>
         <button className={styles.nextBtn} onClick={next}>
-          ›
+          <ChevronRight className={styles.icon} />
         </button>
         <div className={styles.counter}>
           {currentIndex + 1} / {images.length}

@@ -27,12 +27,20 @@ export default async function Home() {
         <About />
       </Section>
       {trendingTV && (
-        <Section title="Популярные сериалы" link="tv/trending">
+        <Section
+          title="Популярные сериалы"
+          link="tv/trending"
+          linkTitle="Посмотреть все"
+        >
           <Films films={trendingTV.results} type="tv" />
         </Section>
       )}
       {popularMovies && (
-        <Section title="Популярные фильмы" link="movie/trending">
+        <Section
+          title="Популярные фильмы"
+          link="movie/trending"
+          linkTitle="Посмотреть все"
+        >
           <Films films={popularMovies.results} type="movie" />
         </Section>
       )}

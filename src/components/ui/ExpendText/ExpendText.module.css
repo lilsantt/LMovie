@@ -6,6 +6,8 @@
   cursor: pointer;
 }
 .button {
+  width: 60%;
+  justify-content: center;
   position: absolute;
   bottom: 0px;
   left: 50%;

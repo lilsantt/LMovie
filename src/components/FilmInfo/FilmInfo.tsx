@@ -9,6 +9,8 @@ import Title from "../Title/Title";
 import Link from "next/link";
 import { getYear } from "@/utils/formatDate";
 import { Timer } from "lucide-react";
+import { getRuntimeValue } from "@/utils/getRuntimeValue";
+import { getEpAndSeasonsCount } from "@/utils/getEpAndSeasonsCount";
 
 type Props = {
   movieDetails: MovieDetails;
@@ -34,17 +36,6 @@ const FilmInfo = ({ movieDetails, type = "movie" }: Props) => {
     .concat(storyEditor);
   const producers = getPeopleListByJobName("Producer");
 
-  const getRuntimeValue = (runtime: number) => {
-    const hours = Math.floor(runtime / 60);
-    const minutes = runtime - hours * 60;
-    return `${hours} ч. ${minutes} м. `;
-  };
-
-  const getEpAndSeasonsCount = (seasonsCount: number, epCount: number) => {
-    return `${seasonsCount} сезон${
-      seasonsCount > 1 && seasonsCount < 5 ? "а" : seasonsCount >= 5 ? "ов" : ""
-    }, ${epCount} серий`;
-  };
   return (
     <>
       <div className={styles.main}>

@@ -4,6 +4,7 @@ import { PersonDetails } from "@/types/tmdb";
 import styles from "./PersonInfo.module.css";
 import ExpandableText from "../ui/ExpendText/ExpendText";
 import { getFormatedDate } from "@/utils/getFormatedDate";
+import { departmentTranslations } from "@/constants/translations";
 
 type PersonInfoProps = {
   personDetails: PersonDetails;
@@ -49,7 +50,8 @@ const PersonInfo = ({ personDetails }: PersonInfoProps) => {
           </li>
           <li>
             <span>Работа</span>
-            {personDetails.known_for_department}
+            {departmentTranslations[personDetails.known_for_department] ||
+              "Не указано"}
           </li>
         </ul>
       </div>

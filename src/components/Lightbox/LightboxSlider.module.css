@@ -79,7 +79,6 @@
   border-radius: 4px;
 }
 
-/* Спиннер загрузки */
 .spinnerContainer {
   position: absolute;
   display: flex;
@@ -99,5 +98,27 @@
 @keyframes spin {
   to {
     transform: rotate(360deg);
+  }
+}
+
+@media (max-width: 768px) {
+  .closeBtn,
+  .prevBtn,
+  .nextBtn {
+    width: 26px;
+    height: 26px;
+  }
+  .icon {
+    width: 16px;
+    height: 16px;
+  }
+
+  .counter {
+    font-size: 0.8rem;
+  }
+
+  .spinner {
+    width: 40px;
+    height: 40px;
   }
 }

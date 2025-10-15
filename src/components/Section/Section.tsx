@@ -8,11 +8,18 @@ import Title from "../Title/Title";
 type SectionProps = {
   title?: string;
   link?: string;
+  linkTitle?: string;
   subtitle?: string;
   children: React.ReactNode;
 };
 
-const Section = ({ title, link = "", children, subtitle }: SectionProps) => {
+const Section = ({
+  title,
+  link = "",
+  children,
+  subtitle,
+  linkTitle,
+}: SectionProps) => {
   return (
     <section className={styles.section}>
       <Container>
@@ -22,7 +29,10 @@ const Section = ({ title, link = "", children, subtitle }: SectionProps) => {
             <span>{subtitle}</span>
             {link && (
               <Link href={link} className={styles.link}>
-                Посмотреть все <ArrowRight className={styles.icon} />
+                {linkTitle && (
+                  <span className={styles.linkTitle}>{linkTitle}</span>
+                )}{" "}
+                <ArrowRight className={styles.icon} />
               </Link>
             )}
           </div>
