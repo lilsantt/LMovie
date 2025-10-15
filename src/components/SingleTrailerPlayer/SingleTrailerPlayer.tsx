@@ -20,24 +20,6 @@ export default function SingleTrailerPlayer({
 
   const thumbnail = `https://img.youtube.com/vi/${video.key}/hqdefault.jpg`;
 
-  function checkVideoAviable(thumbnail: string) {
-    const img = new Image();
-    img.src = thumbnail;
-    return img.width !== 0 && img.height !== 0;
-  }
-
-  if (!checkVideoAviable(thumbnail))
-    return (
-      <>
-        <div className={styles.preview}>
-          <div className={styles.thumbnail} />
-          <div className={styles.overlay}>
-            <p>Трейлер недоступен</p>
-          </div>
-        </div>
-      </>
-    );
-
   return (
     <>
       <div className={styles.preview} onClick={() => setIsOpen(true)}>
