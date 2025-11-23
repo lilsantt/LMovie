@@ -4,8 +4,8 @@ import Pagination from "@/components/Pagination/Pagination";
 import SearchList from "@/components/SearchList/SearchList";
 import Section from "@/components/Section/Section";
 import { TMDB_ENDPOINTS } from "@/constants/apiRoutes";
-import { maxPageCount } from "@/constants/constants";
-import { SITE_NAME } from "@/constants/names";
+import { MAX_PAGE_COUNT } from "@/constants/constants";
+import { METADATA } from "@/constants/metadata";
 import React from "react";
 
 type SearchParams = {
@@ -21,7 +21,7 @@ export async function generateMetadata({ searchParams }: Props) {
 
   return {
     title: `Популярные сериалы - Страница ${resolvedParams.p || 1}`,
-    description: `Лучшие сериалы прямо сейчас. Откройте для себя топовые телешоу на ${SITE_NAME}: драмы, комедии и новинки.`,
+    description: `Лучшие сериалы прямо сейчас. Откройте для себя топовые телешоу на ${METADATA.siteName}: драмы, комедии и новинки.`,
   };
 }
 
@@ -39,7 +39,7 @@ const TVTrendingPage = async ({ searchParams }: Props) => {
     <div>
       <Section
         title="Популярные сериалы"
-        subtitle={`Страница ${movies.page} из ${maxPageCount}`}
+        subtitle={`Страница ${movies.page} из ${MAX_PAGE_COUNT}`}
       >
         <SearchList items={movies.results} checkType type="tv" />
       </Section>

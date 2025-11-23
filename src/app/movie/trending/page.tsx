@@ -4,8 +4,8 @@ import Pagination from "@/components/Pagination/Pagination";
 import SearchList from "@/components/SearchList/SearchList";
 import Section from "@/components/Section/Section";
 import { TMDB_ENDPOINTS } from "@/constants/apiRoutes";
-import { maxPageCount } from "@/constants/constants";
-import { SITE_NAME } from "@/constants/names";
+import { MAX_PAGE_COUNT } from "@/constants/constants";
+import { METADATA } from "@/constants/metadata";
 import React from "react";
 
 type SearchParams = {
@@ -21,7 +21,7 @@ export async function generateMetadata({ searchParams }: Props) {
 
   return {
     title: `Популярные фильмы - Страница ${resolvedParams.p || 1}`,
-    description: `Смотрите самые популярные фильмы на ${SITE_NAME}. Новинки, рейтинговые хиты и лучшие киноленты недели.`,
+    description: `Смотрите самые популярные фильмы на ${METADATA.siteName}. Новинки, рейтинговые хиты и лучшие киноленты недели.`,
   };
 }
 
@@ -39,7 +39,7 @@ const MovieTrending = async ({ searchParams }: Props) => {
     <div>
       <Section
         title="Популярные фильмы"
-        subtitle={`Страница ${movies.page || 1} из ${maxPageCount}`}
+        subtitle={`Страница ${movies.page || 1} из ${MAX_PAGE_COUNT}`}
       >
         <SearchList items={movies.results} checkType />
       </Section>

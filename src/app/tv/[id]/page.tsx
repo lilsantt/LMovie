@@ -6,7 +6,7 @@ import Films from "@/components/Films/FilmsList";
 import { NotFoundInfo } from "@/components/NotFound/NotFoundInfo";
 import Section from "@/components/Section/Section";
 import TrailerPlayer from "@/components/TrailerPlayer/TrailerPlayer";
-import { SITE_NAME } from "@/constants/names";
+import { METADATA } from "@/constants/metadata";
 import { getCachedMovieDetails } from "@/utils/getCachedQueries";
 import { Metadata } from "next";
 import React from "react";
@@ -27,7 +27,7 @@ export async function generateMetadata({
     };
   }
 
-  const title = `${movieDetails.name} — ${SITE_NAME}`;
+  const title = `${movieDetails.name} — ${METADATA.siteName}`;
   const description = movieDetails.overview
     ? movieDetails.overview.slice(0, 160) + "..."
     : `Информация о ${movieDetails.name}: акетёры, трейлеры, фото.`;

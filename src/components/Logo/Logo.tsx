@@ -1,4 +1,4 @@
-import { SITE_NAME } from "@/constants/names";
+import { SITE_NAME } from "@/constants/metadata";
 import Link from "next/link";
 import React from "react";
 import Title from "../Title/Title";

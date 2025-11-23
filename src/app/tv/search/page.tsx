@@ -5,8 +5,8 @@ import Pagination from "@/components/Pagination/Pagination";
 import SearchList from "@/components/SearchList/SearchList";
 import Section from "@/components/Section/Section";
 import Sidebar from "@/components/Sidebar/Sidebar";
-import { maxPageCount } from "@/constants/constants";
-import { SITE_NAME } from "@/constants/names";
+import { MAX_PAGE_COUNT } from "@/constants/constants";
+import { METADATA } from "@/constants/metadata";
 import React from "react";
 
 type SearchParams = {
@@ -26,8 +26,10 @@ export async function generateMetadata({ searchParams }: Props) {
   const resolvedParams = await searchParams;
 
   const title = `Поиск сериалов — ${
-    resolvedParams.p ? "Страница " + (resolvedParams.p || "1") : SITE_NAME
-  } | ${SITE_NAME}`;
+    resolvedParams.p
+      ? "Страница " + (resolvedParams.p || "1")
+      : METADATA.siteName
+  } | ${METADATA.siteName}`;
 
   const description = `Ищите сериалы быстро и удобно! Наш сервис использует TMDB API, чтобы предоставить актуальные данные о сериалах, трейлерах и описаниях.`;
 
@@ -76,7 +78,7 @@ const TVSearchPage = async ({ searchParams }: Props) => {
         <main className="flex-1 flex">
           <Section
             title="Поиск сериалов"
-            subtitle={`Страница ${page || 1} из ${maxPageCount}`}
+            subtitle={`Страница ${page || 1} из ${MAX_PAGE_COUNT}`}
           >
             <SearchList items={films.results} type="tv" checkType />
           </Section>

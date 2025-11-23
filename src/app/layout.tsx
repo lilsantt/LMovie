@@ -6,7 +6,7 @@ import Footer from "@/components/Footer/Footer";
 import LayoutWrapper from "@/components/LayoutWrapper/LayoutWrapper";
 import { getMovieGenres, getTVGenres } from "@/api/tmdb/getGenres";
 import { GenresProvider } from "@/context/GenresContext";
-import { SITE_NAME } from "@/constants/names";
+import { METADATA } from "@/constants/metadata";
 
 const dmSans = DM_Sans({
   variable: "--font-dm-sans",
@@ -14,9 +14,8 @@ const dmSans = DM_Sans({
 });
 
 export const metadata: Metadata = {
-  title: SITE_NAME,
-  description:
-    "Ищите сериалы быстро и удобно! Наш сервис использует TMDB API, чтобы предоставить актуальные данные о сериалах, трейлерах и описаниях.",
+  title: METADATA.siteName,
+  description: METADATA.description,
 };
 
 export default async function RootLayout({

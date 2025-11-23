@@ -3,7 +3,7 @@ import { NotFoundInfo } from "@/components/NotFound/NotFoundInfo";
 import Pagination from "@/components/Pagination/Pagination";
 import SearchList from "@/components/SearchList/SearchList";
 import Section from "@/components/Section/Section";
-import { SITE_NAME } from "@/constants/names";
+import { METADATA } from "@/constants/metadata";
 import React from "react";
 
 type SearchParams = {
@@ -21,8 +21,8 @@ export async function generateMetadata({ searchParams }: Props) {
   const title = resolvedParams.s
     ? `Поиск: "${resolvedParams.s?.replaceAll("+", " ")}"${
         resolvedParams.p ? ` – Страница ${resolvedParams.p}` : ""
-      } | ${SITE_NAME}`
-    : `Поиск фильмов и сериалов | ${SITE_NAME}`;
+      } | ${METADATA.siteName}`
+    : `Поиск фильмов и сериалов | ${METADATA.siteName}`;
 
   const description = `Ищите сериалы быстро и удобно! Наш сервис использует TMDB API, чтобы предоставить актуальные данные о сериалах, трейлерах и описаниях.`;
 

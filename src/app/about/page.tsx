@@ -2,11 +2,11 @@ import Image from "next/image";
 import React from "react";
 import styles from "./page.module.css";
 import { Cpu, Database, Film } from "lucide-react";
-import { SITE_NAME } from "@/constants/names";
+import { METADATA } from "@/constants/metadata";
 import Container from "@/components/Container/Container";
 
 export async function generateMetadata() {
-  const title = `О нас — ${SITE_NAME}`;
+  const title = `О нас — ${METADATA.siteName}`;
   const description = `Этот сайт — часть моего портфолио, созданный на Next.js с использованием TMDB API. Здесь вы найдете подборки фильмов, трейлеры и описания с актуальной информацией. Проект демонстрирует навыки в разработке современного UI, интеграции API и оптимизации производительности. В планах — расширение функционала для удобства пользователей.`;
 
   return {
@@ -28,7 +28,7 @@ export default function Page() {
         />
         <Container>
           <div className={styles.heroContent}>
-            <h1 className={styles.heroTitle}>{SITE_NAME}</h1>
+            <h1 className={styles.heroTitle}>{METADATA.siteName}</h1>
             <p className={styles.heroSubtitle}>
               Сайт для любителей кино, вдохновлённый The Movie Database (TMDB)
             </p>
