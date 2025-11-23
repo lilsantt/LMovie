@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import { DM_Sans } from "next/font/google";
 import "./globals.css";
-import Header from "@/components/Header/Header";
-import Footer from "@/components/Footer/Footer";
-import LayoutWrapper from "@/components/LayoutWrapper/LayoutWrapper";
+import Header from "@/components/layout/Header/Header";
+import Footer from "@/components/layout/Footer/Footer";
+import LayoutWrapper from "@/components/layout/LayoutWrapper/LayoutWrapper";
 import { getMovieGenres, getTVGenres } from "@/api/tmdb/getGenres";
 import { GenresProvider } from "@/context/GenresContext";
 import { METADATA } from "@/constants/metadata";

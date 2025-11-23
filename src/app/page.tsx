@@ -1,26 +1,12 @@
-import { getMovies } from "@/api/tmdb/getMovies";
-import { getUpcomingMoviesWithTrailers } from "@/api/tmdb/getUpcomingMovieTrailers";
-import { About } from "@/components/About/About";
-import Films from "@/components/Films/FilmsList";
-import PopularFilmList from "@/components/PopularFilmList/PopularFilmList";
-import Section from "@/components/Section/Section";
-import UpcomingTrailers from "@/components/UpcomingTrailers/UpcomingTrailers";
-import { TMDB_ENDPOINTS } from "@/constants/apiRoutes";
-import { ITEMS_PER_SLIDER, TRAILERS_PER_PAGE } from "@/constants/constants";
+import { About } from "@/components/layout/About/About";
+import Films from "@/components/films-list/Films/FilmsList";
+import PopularFilmList from "@/components/popular-films/PopularFilmList/PopularFilmList";
+import Section from "@/components/ui/Section/Section";
+import UpcomingTrailers from "@/components/trailer/UpcomingTrailers/UpcomingTrailers";
+import { getHomeData } from "@/utils/getHomeData";
 
 export default async function Home() {
-  const [popularMovies, trendingTV, upcomingTrailers] = await Promise.all([
-    getMovies({
-      count: ITEMS_PER_SLIDER,
-      endpoint: TMDB_ENDPOINTS.POPULAR_MOVIES,
-    }),
-    getMovies({
-      count: ITEMS_PER_SLIDER,
-      endpoint: TMDB_ENDPOINTS.TRENDING_TV_SHOWS,
-    }),
-    getUpcomingMoviesWithTrailers(TRAILERS_PER_PAGE),
-  ]);
-
+  const { popularMovies, trendingTV, upcomingTrailers } = await getHomeData();
   return (
     <div>
       {popularMovies && <PopularFilmList movies={popularMovies.results} />}

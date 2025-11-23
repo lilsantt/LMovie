@@ -1,0 +1,19 @@
+import React from "react";
+import styles from "./Sidebar.module.css";
+import Accordion from "../../ui/Accordion/Accordion";
+import Filter from "../../search/Filters/Filter/Filter";
+import { getMovieGenres } from "@/api/tmdb/getGenres";
+
+const Sidebar = async () => {
+  const genres = await getMovieGenres();
+  if (!genres) return;
+  return (
+    <div className={styles.sidebar}>
+      <Accordion name="Фильтры">
+        <Filter />
+      </Accordion>
+    </div>
+  );
+};
+
+export default Sidebar;

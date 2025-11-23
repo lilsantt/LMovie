@@ -1,8 +1,8 @@
 import { getMovies } from "@/api/tmdb/getMovies";
-import { NotFoundInfo } from "@/components/NotFound/NotFoundInfo";
-import Pagination from "@/components/Pagination/Pagination";
-import SearchList from "@/components/SearchList/SearchList";
-import Section from "@/components/Section/Section";
+import { NotFoundInfo } from "@/components/layout/NotFound/NotFoundInfo";
+import Pagination from "@/components/ui/Pagination/Pagination";
+import SearchList from "@/components/search/SearchList/SearchList";
+import Section from "@/components/ui/Section/Section";
 import { TMDB_ENDPOINTS } from "@/constants/apiRoutes";
 import { MAX_PAGE_COUNT } from "@/constants/constants";
 import { METADATA } from "@/constants/metadata";

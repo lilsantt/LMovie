@@ -3,7 +3,7 @@ import React from "react";
 import styles from "./page.module.css";
 import { Cpu, Database, Film } from "lucide-react";
 import { METADATA } from "@/constants/metadata";
-import Container from "@/components/Container/Container";
+import Container from "@/components/layout/Container/Container";
 
 export async function generateMetadata() {
   const title = `О нас — ${METADATA.siteName}`;

@@ -1,6 +1,6 @@
 "use client";
 
-import { FilterState } from "@/components/Filters/Filter/Filter";
+import { FilterState } from "@/components/search/Filters/Filter/Filter";
 import { Slider } from "@mui/material";
 import styles from "./Range.module.css";
 

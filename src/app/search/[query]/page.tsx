@@ -1,8 +1,8 @@
 import { searchFilms } from "@/api/tmdb/searchFilms";
-import { NotFoundInfo } from "@/components/NotFound/NotFoundInfo";
-import Pagination from "@/components/Pagination/Pagination";
-import SearchList from "@/components/SearchList/SearchList";
-import Section from "@/components/Section/Section";
+import { NotFoundInfo } from "@/components/layout/NotFound/NotFoundInfo";
+import Pagination from "@/components/ui/Pagination/Pagination";
+import SearchList from "@/components/search/SearchList/SearchList";
+import Section from "@/components/ui/Section/Section";
 import { METADATA } from "@/constants/metadata";
 import React from "react";
 

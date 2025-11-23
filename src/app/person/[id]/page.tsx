@@ -1,9 +1,9 @@
-import BackdropGallery from "@/components/BackdropGallery/BackdropGallery";
-import Container from "@/components/Container/Container";
-import { NotFoundInfo } from "@/components/NotFound/NotFoundInfo";
-import PersonInfo from "@/components/PersonInfo/PersonInfo";
-import Section from "@/components/Section/Section";
-import Tabs from "@/components/Tabs/Tabs";
+import BackdropGallery from "@/components/ui/BackdropGallery/BackdropGallery";
+import Container from "@/components/layout/Container/Container";
+import { NotFoundInfo } from "@/components/layout/NotFound/NotFoundInfo";
+import PersonInfo from "@/components/person/PersonInfo/PersonInfo";
+import Section from "@/components/ui/Section/Section";
+import Tabs from "@/components/person/Tabs/Tabs";
 import { getCachedPersonDetails } from "@/utils/getCachedQueries";
 import { Metadata } from "next";
 import React from "react";
