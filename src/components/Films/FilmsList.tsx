@@ -6,6 +6,7 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 import FilmsCard from "../FilmsCard/FilmsCard";
 import { MovieRusult } from "@/types/tmdb";
 import FilmsCardSkeleton from "../FilmsCard/Skeleton/FilmsCardSkeleton";
+import { ITEMS_PER_SLIDER } from "@/constants/constants";
 
 type Props = {
   films: MovieRusult[];
@@ -33,7 +34,7 @@ const FilmsSlider = ({ films, type }: Props) => {
 
       <div className={styles.slider} ref={sliderRef}>
         {!films.length
-          ? Array.from({ length: 10 }).map((_, i) => (
+          ? Array.from({ length: ITEMS_PER_SLIDER }).map((_, i) => (
               <div key={i} className={styles.slide}>
                 <FilmsCardSkeleton />
               </div>

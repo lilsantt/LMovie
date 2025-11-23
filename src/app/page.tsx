@@ -6,18 +6,19 @@ import PopularFilmList from "@/components/PopularFilmList/PopularFilmList";
 import Section from "@/components/Section/Section";
 import UpcomingTrailers from "@/components/UpcomingTrailers/UpcomingTrailers";
 import { TMDB_ENDPOINTS } from "@/constants/apiRoutes";
+import { ITEMS_PER_SLIDER, TRAILERS_PER_PAGE } from "@/constants/constants";
 
 export default async function Home() {
   const [popularMovies, trendingTV, upcomingTrailers] = await Promise.all([
     getMovies({
-      count: 10,
+      count: ITEMS_PER_SLIDER,
       endpoint: TMDB_ENDPOINTS.POPULAR_MOVIES,
     }),
     getMovies({
-      count: 10,
+      count: ITEMS_PER_SLIDER,
       endpoint: TMDB_ENDPOINTS.TRENDING_TV_SHOWS,
     }),
-    getUpcomingMoviesWithTrailers(4),
+    getUpcomingMoviesWithTrailers(TRAILERS_PER_PAGE),
   ]);
 
   return (
